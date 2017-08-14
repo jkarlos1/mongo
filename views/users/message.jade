@@ -1,0 +1,21 @@
+
+// my-template.jade
+extends ../layout
+
+//Bloque de contenido.
+block content
+    .col-md-4
+        .row
+            h3 Enviar Mensaje
+        .row
+            select.form-control#user_select
+                -each user in users
+                    option(value="#{user._id}") #{user.username}
+        br
+        .row
+            textarea(rows="3").form-control#message_box
+        br
+        .row
+            button.btn.btn-default#send_button Enviar
+
+    script(type="text/javascript" src="/js/users/message.js")

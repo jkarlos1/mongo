@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+	h3 Newsletters
+	table.table
+		tr
+			td
+				h5 Creada
+			td
+				h5 Franquicia
+			td
+				h5 Ofertas incluidas
+			td
+		-if(newsletters)
+			-each newsletter in newsletters
+				tr
+					td  #{newsletter.created}
+					td  #{newsletter.franchise.name}
+					td 
+						-each deal in newsletter.deals
+							a(href="/deals/#{deal._id}") #{deal.title}
+					td
+						a(href="/newsletters/#{newsletter._id}") Ver
+		-else
+			p No hay newsletters

@@ -1,0 +1,10 @@
+h3 Lista de Franquicias
+table.table
+	tr
+		th Nombre
+		th 
+	-each franchise in franchises
+		tr
+			td #{franchise.name}
+			td 
+				a(href="/franchises/#{franchise._id}") Ver

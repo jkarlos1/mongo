@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+	.col-md-8
+		h3 Editar Franquiciante
+		br
+		form(method='post', id="franchisor_edit", action='/franchisors/edit').form-horizontal
+			input(name='franchisor_id', type='hidden', value='#{franchisor._id}')
+			.form-group
+					label.col-md-3.control-label Nombre:
+					.col-md-6
+						input(name='franchisor[name]',value='#{franchisor.name}',  type='text').form-control.input-sm
+			.form-group
+					label.col-md-3.control-label Dominio:
+					.col-md-6
+						input(name='franchisor[default_domain]',value='#{franchisor.default_domain}',  type='text').form-control.input-sm
+			.form-group
+						label.col-md-3.control-label Dominio seguro:
+						.col-md-6
+							input(name='franchisor[secure_domain]',value='#{franchisor.secure_domain}', type='text').form-control.input-sm
+			.form-group
+						label.col-md-3.control-label Desinencia:
+						.col-md-6
+							input(name='franchisor[cctdl]',value='#{franchisor.cctdl}',  type='text').form-control.input-sm
+			.form-group
+						label.col-md-3.control-label Zona horaria:
+						.col-md-1
+							input(name='franchisor[default_timezone]',value='#{franchisor.default_timezone}',  type='text').form-control.input-sm
+			.form-group
+						label.col-md-3.control-label Lenguaje:
+						.col-md-2
+							input(name='franchisor[language]',value='#{franchisor.language}',  type='text').form-control.input-sm
+			.form-group
+						label.col-md-3.control-label Fanpage:
+						.col-md-6
+							input(name='franchisor[fanpage]', value='#{franchisor.fanpage}', type='text').form-control.input-sm
+			.form-group
+				.col-sm-offset-3.col-sm-8
+					button(type='submit').btn.btn-primary Guardar

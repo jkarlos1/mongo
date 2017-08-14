@@ -1,0 +1,77 @@
+extends ../layout
+
+//Bloque de contenido.
+block content
+	h3 Editar mi perfil
+	.glyphicon.glyphicon-arrow-left
+	a(href="/users/profile")  Volver al perfil
+	br
+	br
+	br
+	form(method="post",id="users_edit", action="/users/profile/edit").form-horizontal
+		input(name="user_id", type="hidden", , value="#{user._id}")
+		.form-group
+			label.control-label.col-md-2 Nombre de Usuario:
+			.col-md-5
+				input(name="user[username]", type="text", value="#{user.username}" ,class="required").form-control.input-sm
+		.form-group
+			label.control-label.col-md-2 Nombre completo:
+			.col-md-5
+				input(name="user[name]", type="text", value="#{user.name}" ,class="required").form-control.input-sm
+		.form-group
+			label.control-label.col-md-2 Apellido(s):
+			.col-md-5
+				input(name="user[lname]", type="text", value="#{user.lname}" ,class="required").form-control.input-sm
+		.form-group
+			label.control-label.col-md-2 Email:
+			.col-md-5
+				input(name="user[email]", type="text", value="#{user.email}"  ,class="required email").form-control.input-sm
+		.form-group
+			label.control-label.col-md-2 Telefono:
+			.col-md-3
+				input(name="user[phone]", type="text", value="#{user.phone}").form-control.input-sm
+		.form-group
+			label.control-label.col-md-2 Celular:
+			.col-md-3
+				input(name="user[mobile]", type="text", value="#{user.mobile}").form-control.input-sm
+		.form-group
+			label.control-label.col-md-2 Direccion: 
+			.col-md-5
+				input(name="user[address]", type="text", value="#{user.address}").form-control.input-sm
+		.form-group
+			label.control-label.col-md-2 Pais:
+			.col-md-3
+				select(name="user_country", id="country_selector").form-control.input-sm
+					-each country in countries
+						-if (String(country._id) == String(state.country))
+							option(value="#{country._id}", selected="true") #{country.name} 
+						-else
+							option(value="#{country._id}") #{country.name} 
+		.form-group
+			label.control-label.col-md-2 Provincia:
+			.col-md-3
+				select(name="user_state", id="state_selector").form-control.input-sm
+					-each s in states
+						-if (String(s._id) == String(state._id))
+							option(value="#{s._id}", selected="true") #{s.name} 
+						-else
+							option(value="#{s._id}") #{s.name} 
+		.form-group
+			label.control-label.col-md-2 Ciudad:
+			.col-md-3
+				select(name="user[city]", id="city_selector").form-control.input-sm
+					-each city in cities
+						-if (String(city._id) == String(user.city._id))
+							option(value="#{city._id}", selected="true") #{city.name} 
+						-else
+							option(value="#{city._id}") #{city.name} 
+
+		.form-group
+			label.control-label.col-md-2 Cod. Postal:
+			.col-md-2
+				input(name="user[zip]", type="text", value="#{user.zip}").form-control.input-sm
+		br
+		.form-group
+			.col-sm-offset-2.col-sm-8
+				button(name="submit", type="submit").btn.btn-primary Guardar
+	script(type="text/javascript", src="/js/users/edit_profile.js")

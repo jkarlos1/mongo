@@ -1,0 +1,142 @@
+extends ../home
+
+block content
+
+	-if(typeof expose.user === "undefined")
+		.col-md-4
+			h4 ¿Estas Resgistrado?
+			br
+			form(method='post', action='/users/login/', role="form").form-horizontal
+				input(type="hidden", name="redirect_url", value="#{redirect_url}")
+				.form-group
+					label.col-md-4 Usuario
+					.col-md-8
+						input(name='username', type='text', class="required").form-control
+				.form-group
+					label.col-md-4 Contraseña
+					.col-md-8
+						input(name='password', type='password', class="required").form-control
+				br
+				button(name='submit', type='submit').btn.btn-primary.col-md-offset-9.col-md-3 Ingresar
+		//
+		.col-md-7.body_register
+				h4 Crea tu cuenta	
+				form(method='post', id="users_register", action='/users/save').form-horizontal
+					p.text-muted * Campos Obligatorios
+					.form-group
+						label.col-md-5.control-label *Nombre de Usuario:
+						.col-md-7
+							input(name='user[username]', type='text', class='form-control input-sm required') 
+					.form-group
+						label.col-md-5.control-label *Nombres:
+						.col-md-7
+							input(name='user[name]', type='text' ,class='form-control input-sm required') 
+					.form-group
+						label.col-md-5.control-label *Apellido(s):
+						.col-md-7
+							input(name='user[lname]', type='text' ,class="form-control input-sm required") 
+					.form-group
+						label.col-md-5.control-label *Email:
+						.col-md-7
+							input(name='user[email]', type='text' ,class="form-control input-sm required email") 
+					.form-group
+						label.col-md-5.control-label *Contraseña:
+						.col-md-7
+							input(name='user[password]', type='password', class="form-control input-sm required") 
+					.form-group
+						label.col-md-5.control-label *Confirmar contraseña:
+						.col-md-7
+							input(name='user[confirm_password]', type='password', class="form-control input-sm required") 
+					.form-group
+						label.col-md-5.control-label *Fecha de nacimiento:
+						.col-md-7
+							input(name='user[birthday]', type='date', class="form-control input-sm required") 
+					.form-group
+						label.col-md-5.control-label Genero:
+						.col-md-7.input-group-sm
+							select.form-control
+								option(value='m') Masculino
+								option(value='f') Femenino
+					.form-group
+						label.col-md-5.control-label Telefono:
+						.col-md-7
+							input(name='user[phone]', type='text', class='input-sm').form-control
+					.form-group
+						label.col-md-5.control-label Celular:
+						.col-md-7
+							input(name='user[mobile]', type='text', class='input-sm').form-control
+					.form-group
+						label.col-md-5.control-label *Dirección: 
+						.col-md-7
+							input(name='user[address]', type='text', class="form-control input-sm required")
+					.form-group
+						label.col-md-5.control-label *Páis:
+						.col-md-7
+							select(name='user[country]', type='text' ,id="select_country").form-control.required.col-md-8.input-sm
+								-each country in countries
+									option( value="#{country._id}") #{country.name}	
+					.form-group
+						label.col-md-5.control-label *Provincia:
+						.col-md-7
+							select(name='user[state]', type='text' ,id="select_state").form-control.required.col-md-8.input-sm
+					.form-group
+						label.col-md-5.control-label *Ciudad:
+						.col-md-7
+							select(name='user[city]', type='text' ,id="select_city").form-control.required.input-sm
+					.form-group
+						label.col-md-5.control-label *Codigo Postal:
+						.col-md-7
+							input(name='user[zip]', type='text', class="form-control input-sm required")
+					.form-group
+						label.col-md-5.control-label Usuario Que te Invito: 
+						.col-md-7
+							-if(!username) username = ""
+							-if (typeof invitation !== "undefined")
+								-username = invitation.invite_user.username ;
+								input(type='hidden', name="invitation", value="#{invitation._id}" ,class="form-control input-sm")
+							input(type='text', name="user[inviter]",placeholder="Usuario", value="#{username}" ,class="form-control input-sm users_input typeahead" , data-provide="typeahead", data-items="4")
+					.form-group
+						.col-md-offset-5.col-md-7
+							button(name='submit', type='submit').btn.btn-info Registrarme
+			script(type='text/javascript' src='/js/users/create.js')
+	-else
+		form(action="/sales/buy",id="buy_form", method="post", role="form").form-horizontal
+			input(type="hidden", value="#{deal._id}", name="id")
+			h4 Tu compra
+			br
+			include ../partials/sale/checkout
+			h4 Elegí forma de pago 
+				img(src='/img/tarjetas_credito.gif')
+			br
+			.well
+				.form-group
+					label.col-md-2 Medio de pago:
+					.col-md-3
+						select(type="text", name="payment_type").form-control
+							optgroup( label="Tarjeta de Crédito") 
+								option(value="mastercard") Mastercard
+								option(value="visa") Visa
+								option(value="cabal") Cabal
+								option(value="argencard") Argencard
+							optgroup( label="Otras formas de pago")
+				.form-group
+					label.col-md-2 Nro. Tarjeta:
+					.col-md-3
+						input(type="text", name="card_number", maxlength="16" , class="input-large", size="16").form-control
+				.form-group
+					label.col-md-2 Cod. Seguridad:
+					.col-md-1
+						input(type="text", name="card_safety_numbers", maxlength="3", class="input-small", size="3").form-control
+				.form-group
+					label.col-md-2 Nombre Completo:
+					.col-md-3
+						input(type="text", name="complete_name", class="input-large").form-control
+				.form-group
+					label.col-md-2 DNI:
+					.col-md-3
+						input(type="text", name="dni" , maxlength="16" , class="input-large" , size="16").form-control
+					input(type='submit', value='Confirmar Compra').btn.btn-primary.col-md-offset-1.col-md-2
+		script(type='text/javascript' src='/js/users/create.js')							
+
+									
+			

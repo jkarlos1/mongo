@@ -1,0 +1,131 @@
+
+// my-template.jade
+extends ../layout
+
+//Bloque de contenido.
+block content
+	.img_profile
+		-if (contacts)
+			h5 Tenes #{contacts.length} contactos!
+	ul(class="nav nav-tabs nav-justified")
+		li.active
+			a(href="#misdatos", data-toggle="tab") Datos
+		li
+			a(href="#missuscripciones", data-toggle="tab") Suscripciones
+		li
+			a(href="#misofertas", data-toggle="tab") Ofertas
+		li
+			a(href="#miscomisiones", data-toggle="tab") Comisiones
+		li
+			a(href="#misbonos", data-toggle="tab") Bonos
+		li
+			a(href="#misimagenes", data-toggle="tab") Imagenes
+		-if(RolesHelper.member(expose.user)|| RolesHelper.franchisorAdministrator(expose.user) || RolesHelper.generalAdministrator(expose.user)|| RolesHelper.admin(expose.user))
+			li
+				a(href="#administration", data-toggle="tab") Administración
+	.tab-content
+		.tab-pane.fade.active.in#misdatos
+			br
+			h3 Datos del usuario: #{user.username}
+			.glyphicon.glyphicon-pencil
+			a(href="/users/profile/edit")  Editar datos
+			br
+			br
+			br
+			.col-md-8
+				table.table.table-condensed
+					tr 
+						td.col-md-2
+							label Nombre:
+						td #{user.name} #{user.lname}
+					tr
+						td.col-md-2
+							label Email:
+						td #{user.email}
+					tr 
+						td.col-md-2
+							label Dirección:
+						td #{user.address} - #{user.city.name}, #{state.name} - #{country.name}
+					tr 
+						td.col-md-2 
+							label Telefono:
+						td #{user.phone}
+					tr 
+						td.col-md-2
+							label Movil:
+						td #{user.mobile}
+		-if(RolesHelper.member(expose.user)|| RolesHelper.franchisorAdministrator(expose.user) || RolesHelper.generalAdministrator(expose.user)|| RolesHelper.admin(expose.user))
+			.tab-pane.fade.in#administration
+				h3 Agregar Roles
+				br
+				include ../partials/users/add_roles
+		.tab-pane.fade.in#misofertas
+				h3 Lista de Compras
+				br
+				table.table.table-condensed.table-striped.table-hover
+					tr
+						th Oferta
+						th Estado
+						th Forma de Pago
+						th Fecha
+					-each deal in deals
+						tr
+							td
+								a(href="/sales/#{deal.sales._id}") #{deal.title}
+							-if(deal.sales.coupons.status)
+								-if(deal.sales.coupons.status == 'unredeemed')
+									td sin canjear
+								-else
+									td canjeado
+							-else
+								td sin canjear
+							td #{deal.sales.payment_method}
+							td=util.date_time_string(deal.sales.created)
+		.tab-pane.fade.in#missuscripciones
+			h3 Lista de Suscripciones
+			br
+			table.table.missuscripciones.table-condensed.table-striped
+				-if (subscriptions)
+					tr 
+						th.tdmisdatos Nombre
+						th.tdmisdatos Fecha de suscripcion
+					-each subscription in subscriptions
+						-if(subscription.franchise)
+							tr 
+								td #{subscription.franchise.name}
+								td #{subscription.created}
+		.tab-pane.fade.in#misbonos
+			h3 Lista de Bonos
+			br
+			table.table.misbonos.table-condensed.table-hover.table-striped
+				tr
+					th Usuario
+					th Monto
+					th Fecha
+					th 
+				-if (bonuses)
+					-each bonus in bonuses
+						include ../partials/bonuses/bonus
+		.tab-pane.fade.in#miscomisiones
+			h3 Lista de Comisiones
+			br
+			table.table.miscomisiones.table-condensed.table-hover.table-striped
+				tr
+					th Monto
+					th Fecha
+					th  
+				-if (commissions)
+					-each commission in commissions
+						include ../partials/commissions/commission
+		.tab-pane.fade.in#misimagenes
+			h3 Agregar Imagenes
+			-var route_name = "users"
+			-var get_id = user._id
+			include ../includes/image_upload
+			- images = user.images
+			- param = "users"
+			- id = user._id
+			.images
+				-for (var i = images.length - 1; i >= 0; i--)
+					-var image = images[i]
+					include ../partials/images/media_list

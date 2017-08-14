@@ -1,0 +1,100 @@
+.col-md-10.body_register
+		h3 Crea tu cuenta
+			//- img(src="/img/img-form-reg.png", class='img_form_reg') 	
+		form(method='post', id="users_register", action='/users/save').form-horizontal
+			p.text-muted * Campos Obligatorios
+			.col-md-6
+				.form-group
+					label.col-md-5.control-label *Nombre de Usuario:
+					.col-md-7
+						input(name='user[username]', type='text', class='form-control input-sm required') 
+				.form-group
+					label.col-md-5.control-label *Nombres:
+					.col-md-7
+						input(name='user[name]', type='text' , class='form-control input-sm required') 
+				.form-group
+					label.col-md-5.control-label *Apellido(s):
+					.col-md-7
+						input(name='user[lname]', type='text' , class="form-control input-sm required") 
+				.form-group
+					label.col-md-5.control-label *Email:
+					.col-md-7
+						input(name='user[email]', type='text' , class="form-control input-sm required email") 
+				.form-group
+					label.col-md-5.control-label *Contraseña:
+					.col-md-7
+						input(name='user[password]', id='password', type='password', class="form-control input-sm") 
+				.form-group
+					label.col-md-5.control-label *Confirmar contraseña:
+					.col-md-7
+						input(name='user[confirm_password]', id='confirm_password', type='password', class="form-control input-sm") 
+				.form-group
+					label.col-md-5.control-label *Fecha de nacimiento:
+					.col-md-7
+						input(name='user[birthday]', type='date', class="form-control input-sm required") 
+				.form-group
+					label.col-md-5.control-label Genero:
+					.col-md-7.input-group-sm
+						select.form-control
+							option(value='m') Masculino
+							option(value='f') Femenino
+			.col-md-6
+				.form-group
+					label.col-md-5.control-label Telefono:
+					.col-md-7
+						input(name='user[phone]', type='text', class='input-sm').form-control
+				.form-group
+					label.col-md-5.control-label Celular:
+					.col-md-7
+						input(name='user[mobile]', type='text', class='input-sm').form-control
+				.form-group
+					label.col-md-5.control-label *Dirección: 
+					.col-md-7
+						input(name='user[address]', type='text', class="form-control input-sm required")
+				.form-group
+					label.col-md-5.control-label *Páis:
+					.col-md-7
+						select(name='user[country]', type='text' ,id="select_country").form-control.required.col-md-8.input-sm
+							-each country in countries
+								option( value="#{country._id}") #{country.name}	
+				.form-group
+					label.col-md-5.control-label *Provincia:
+					.col-md-7
+						select(name='user[state]', type='text' ,id="select_state").form-control.required.col-md-8.input-sm
+				.form-group
+					label.col-md-5.control-label *Ciudad:
+					.col-md-7
+						select(name='user[city]', type='text' ,id="select_city").form-control.required.input-sm
+				.form-group
+					label.col-md-5.control-label *Codigo Postal:
+					.col-md-7
+						input(name='user[zip]', type='text', class="form-control input-sm required")
+				.form-group
+					label.col-md-5.control-label Usuario Que te Invito: 
+					.col-md-7
+						-if(!username) username = ""
+						-if (typeof invitation !== "undefined")
+							-username = invitation.invite_user.username ;
+							input(type='hidden', name="invitation", value="#{invitation._id}" ,class="form-control input-sm")
+						input(type='text', name="user[inviter]",placeholder="Usuario", value="#{username}" ,class="form-control input-sm users_input typeahead" , data-provide="typeahead", data-items="4")
+				.form-group
+					.col-md-offset-5.col-md-7
+						button(name='submit', type='submit').btn.btn-info Registrarme
+	.col-md-5
+		br 
+		br
+		
+		h4 Ya estas registrado?
+		form(method='post', action='/users/login/').form-horizontal
+			.form-group
+				label.col-md-5.control-label Usuario:
+				.col-md-7
+					input(name='username', type='text' ,class="required input-sm form-control")
+			.form-group
+				label.col-md-5.control-label Contraseña:
+				.col-md-7
+					input(name='password', type='password' ,class="required input-sm form-control") 
+			.form-group
+				.col-md-offset-5.col-md-3
+					button(name='submit', type='submit').btn.btn-info.form-control Enviar
+	script(type='text/javascript' src='/js/users/create.js')

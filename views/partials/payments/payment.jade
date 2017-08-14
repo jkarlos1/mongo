@@ -1,0 +1,12 @@
+tr 
+	td $ #{payment.amount}
+	td #{payment.created.getDate()} / #{payment.created.getMonth()+1} / #{payment.created.getFullYear()}
+	td
+		-if(bank_account)
+			p #{bank_account.bank_name} - #{bank_account.bank_name}
+	td
+		-each commission in payment.commissions
+			p $ #{commission.amount} (#{commission.created.getDate()} / #{commission.created.getMonth()+1} / #{commission.created.getFullYear()})
+	td
+		-each bonus in payment.bonuses
+			p $ #{bonus.amount} (#{bonus.created.getDate()} / #{bonus.created.getMonth()+1} / #{bonus.created.getFullYear()})

@@ -1,0 +1,207 @@
+body {
+	padding: 0 !important;
+}
+
+.fleft {float: left;}
+.fright {float: right;}
+.clear {clear: both;}
+.center {float: center;}
+.center-block{
+	float:none;
+}
+
+.space{margin: 5px !important}
+
+#head_home {padding-bottom: 15px;padding-top: 5px;}
+
+/* Head de la intranet */
+#head_intranet {
+	background-color: #F2F2F2;
+	border-bottom: 2px solid #00a4cc; 
+	margin-bottom: 15px;padding-top: 5px;
+	padding-left: 4%;
+	padding-right: 4%;
+}
+
+/* Botón de noticias que esta en el head de la intranet */
+.news_intranet{
+	margin-top: 0px !important;
+	margin-right: 10px !important;
+}
+
+.content_body {margin-left: 2%;margin-right: 2%;}
+
+.body_container{
+	min-height: 400px;
+}
+
+/*Fondos de los encabezados del menu de la intranet */
+.titulos_menu {
+	background: #00a4cc; /* Old browsers */
+	background: -moz-linear-gradient(top, #00a4cc 0%, #017296 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00a4cc), color-stop(100%,#017296)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #00a4cc 0%,#017296 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #00a4cc 0%,#017296 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #00a4cc 0%,#017296 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #00a4cc 0%,#017296 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a4cc', endColorstr='#017296',GradientType=0 ); /* IE6-9 */
+	border-radius: 4px;
+	color: #FFF;
+	font-weight: bold !important;
+	padding: 5px 115px 5px 5px;
+}
+
+
+.p_profile {padding-top: 15px;}
+
+.header_franchise_layout {background-color: #fff; height: 80px; border-bottom: 1px solid #e5e5e5;}
+.header_franchise_layout img {
+	padding: 8px 10px 6px;
+	margin-left: 30px;
+	margin-right: 5px;
+}
+
+#left {width: 15%;height:auto;position:relative;margin-left: 30px;padding: 20px 0 0 0;}
+#center {width: 60%; padding: 20px 10px 0 20px;}
+#news {width: 20%}
+
+.original {
+	font: normal 18px 'robotolight', Arial, Helvetica, sans-serif;
+	color: #666;
+	text-decoration: line-through; 
+}
+.dto {
+	margin: 0 10px;
+	padding: 0;
+	font: normal 20px 'robotobold', Arial, Helvetica, sans-serif;
+	color: #333; 
+	font-weight: bold; 
+	color:#690;
+}
+.price {
+	margin: 0;
+	font: normal 24px 'robotobold', Arial, Helvetica, sans-serif;
+	color: #FF0040; 
+	font-weight: bold;
+}
+
+/* Detalle de las ofertas */
+.price_deal {
+	margin: 0;
+	font: normal 40px 'robotobold', Arial, Helvetica, sans-serif;
+	color: #FF0040; 
+	font-weight: bold;
+	text-align:center;
+	display: block;
+}
+
+.data {float: right; padding:8px 15px 0 0; }
+
+.user_img{ width:64px;}
+
+.carousel-inner .item.active img {width: 100%; overflow-y: hidden;}
+
+
+.no-margin-top{
+	margin-top: 0px;
+}
+
+.no-margin-bottom{
+	margin-bottom: 0px;
+}
+
+.feed_container{
+	width:600px;
+	padding-top: 10px !important;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+}
+
+#feed_button{
+	margin-top: 20px;
+}
+.state_selector .draft{
+	color:blue !important;
+	font-weight: bold;
+}
+.state_selector .active{
+	color:green !important;
+	font-weight: bold;
+}
+.state_selector .closed{
+	color:red !important;
+	font-weight: bold;
+}
+
+.caption-top {
+	background: #333;
+	background: rgba(10, 10, 10, 0.30);
+	padding: 0;
+	top: 0;
+	position: absolute;
+	right: 0;left: 0;
+	max-height: 120px;
+	margin: auto;
+	color: #FFF;
+	text-align: center !important;
+}
+.caption-top a {color:#FFF !important;}
+.caption-top .col-md-12 {padding: 0px !important;}
+.caption-top .col-md-12 .col-md-9 {padding-left: 50px !important; padding-right: 0px !important;}
+.buy {	
+	background: #abd801; /* Old browsers */
+	background: -moz-linear-gradient(top, #abd801 0%, #649901 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#abd801), color-stop(100%,#649901)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #abd801 0%,#649901 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #abd801 0%,#649901 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #abd801 0%,#649901 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #abd801 0%,#649901 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#abd801', endColorstr='#649901',GradientType=0 ); /* IE6-9 */
+	height: 130px; 
+	text-align: center; 
+	width: 120px; 
+}
+.special_price {
+	background: #00a4cc; /* Old browsers */
+	background: -moz-linear-gradient(top, #00a4cc 0%, #017296 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00a4cc), color-stop(100%,#017296)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #00a4cc 0%,#017296 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #00a4cc 0%,#017296 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #00a4cc 0%,#017296 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #00a4cc 0%,#017296 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a4cc', endColorstr='#017296',GradientType=0 ); /* IE6-9 */
+	font-weight: bold;
+	height: 130px;
+	text-align: center;
+	width: 120px;
+}
+.box_buy {padding-top: 40px;}
+.box_detalles {padding-top: 50px;}
+
+/* Footer */
+#footer {
+	background-color: #333;
+	color: #FFF;
+	height: 100px;
+}
+
+.deal {
+	height: 400px;
+	max-height: 400px;
+}
+
+.deal .deal_info {
+	height: 100px;
+	max-height: 100px;
+	display: block;
+}
+
+.profile .col-md-12 {
+	padding: 0px !important;
+}
+
+.img_home {
+	max-height: 157px !important;
+	height: 157px !important;
+}
+

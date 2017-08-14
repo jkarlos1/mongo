@@ -1,0 +1,40 @@
+// template.jade
+extends ../layout
+
+//Bloque de contenido.
+block content
+	.container 
+		h3 Cuentas bancarias asociadas a #{expose.user.name} #{expose.user.lname}
+		.glyphicon.glyphicon-plus
+		a(href="#", data-toggle="modal", data-target="#CreateBankAccount")  Crear cuenta bancaria
+		br
+		br
+		br
+		.col-md-7
+			-for (var i = bank_accounts.length - 1; i >= 0; i--) 
+				table.table.table-condensed.table-striped
+					tr
+						td.col-md-3 
+							label Nombre del Banco:
+						td #{bank_accounts[i].bank_name}
+					tr
+						td.col-md-3 
+							label Clabe:
+						td #{bank_accounts[i].bank_clabe}
+					tr
+						td.col-md-3 
+							label Ruta:
+						td #{bank_accounts[i].bank_rute}
+					tr
+						td.col-md-3 
+							label Numero de cuenta:
+						td #{bank_accounts[i].bank_number}
+					tr
+						td.col-md-3 
+							label CURP:
+						td #{bank_accounts[i].curp}
+					tr
+						td.col-md-3 
+							label IFE:
+						td #{bank_accounts[i].ife}
+		include ../bank_accounts/create

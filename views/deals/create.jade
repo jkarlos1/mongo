@@ -1,0 +1,128 @@
+// my-template.jade
+extends ../layout
+
+
+//Bloque de contenido.
+block content
+	script(type="text/javascript" src="/js/jquery.tagline.js")
+	link(rel="stylesheet", type="text/css", href="/css/jquery.tagline.css")
+	.col-md-8
+	h3 Nueva Oferta
+	.glyphicon.glyphicon-list
+	a(href="/deals/all")  Lista de ofertas
+	br
+	br
+	br
+	form(method='post', id="deal_create", action='/deals/add').form-horizontal
+		.form-group
+			label.col-md-3.control-label Titulo:
+			.col-md-6
+				input(name='deal[title]', class="required", type='text', minlength="3").form-control.input-sm
+		.form-group
+			label.col-md-3.control-label Tagline:
+			.col-md-6
+				input(name='deal[tagline]',class="tags", id="tags", type='text').form-control.input-sm
+		.form-group
+			label.col-md-3.control-label Slug:
+			.col-md-6
+				input(name='deal[slug]', type='text',class="required", minlength="3").form-control.input-sm
+		.form-group
+			label.col-md-3.control-label Características:
+			.col-md-6
+				textarea(name='deal[characteristics]', type='text',class="required",rows="9", cols="70").form-control
+		.form-group
+			label.col-md-3.control-label Condiciones:
+			.col-md-6
+				textarea(name='deal[conditions]', type='text',class="required",rows="9", cols="70").form-control
+		.form-group
+			label.col-md-3.control-label Tienda:
+			.col-md-6
+				if(stores.length > 0)
+					select(name='deal[store]', type='text').input-sm#store_selector
+						-each store in stores
+							option(value="#{store._id}") #{store.name} - #{store.franchisor.name}
+				else
+					p No tiene Tiendas cargadas, por favor cree una utilizando el link debajo
+					a(href="/stores/create_store_branch") Crear Tienda 
+		.form-group
+			label.col-md-3.control-label Precio:
+			.col-md-2
+				input(name='deal[price]', type='text', id="price", class="required number" ,minlength="1",maxlength="6").form-control.input-sm
+		.form-group
+			label.col-md-3.control-label Descuento (%):
+			.col-md-2
+				input(name='deal[discount]', type='text', id="discount", class="required number",minlength="1", maxlength="2").form-control.input-sm
+		.form-group 
+			label.col-md-3.control-label Precio especial:
+			.col-md-2
+				input(name='deal[special_price]', id="special_price", readonly="true", type='text',class="required number" ,minlength="1",maxlength="6").form-control.input-sm
+		.form-group
+			label.col-md-3.control-label Fecha de comienzo:
+			.col-md-3
+				input(name='deal[start_date]', type='date', placeholder="dd/mm/yyyy" ,class="required date").form-control.input-sm
+		.form-group
+			label.col-md-3.control-label Hora de comienzo:
+			.col-md-3
+				input(name='deal[start_time]', type='time', value="00:00",class="required").form-control#start_time.input-sm
+		.form-group
+			label.col-md-3.control-label Fecha de fin:
+			.col-md-3
+				input(name='deal[end_date]', type='date', placeholder="dd/mm/yyyy" ,class="required date").form-control.input-sm
+		.form-group
+			label.col-md-3.control-label Hora de fin:
+			.col-md-3
+				input(name='deal[end_time]', type='time', value="00:00",class="required").form-control#end_time.input-sm
+		.form-group
+			label.col-md-3.control-label Inicio fecha de canje:
+			.col-md-3
+				input(name='deal[start_redeem]', type='date', placeholder="dd/mm/yyyy" ,class="required date").form-control.input-sm
+		.form-group
+			label.col-md-3.control-label Fin fecha de canje:
+			.col-md-3
+				input(name='deal[end_redeem]', type='date', placeholder="dd/mm/yyyy" ,class="required date").form-control.input-sm
+		.form-group
+			label.col-md-3.control-label Max. de cupones:
+			.col-md-2
+				input(name='deal[max_coupons]', type='text' ,class="required number" ,minlength="1",maxlength="3").form-control.input-sm
+		.form-group
+			label.col-md-3.control-label Max. por usuario:
+			.col-md-2
+				input(name='deal[max_coupons_by_user]', type='text' ,class="required number" ,minlength="1",maxlength="3").form-control.input-sm
+		.form-group
+			label.col-md-3.control-label % Vendedor:
+			.col-md-2
+				input(name='deal[seller_percentage]', type='text',class="required number",minlength="1", maxlength="2").form-control.input-sm
+		.form-group 
+			label.col-md-3.control-label % Giombu:
+			.col-md-2
+				input(name='deal[giombu_percentage]', type='text',class="required number",minlength="1", maxlength="2").form-control.input-sm
+		.form-group
+			label.col-md-3.control-label % Promotor:
+			.col-md-2
+				input(name='deal[promoter_percentage]', type='text',class="required number",minlength="1", maxlength="2").form-control.input-sm
+		.form-group
+			label.col-md-3.control-label Estado:
+			.col-md-8
+				select(name='deal[status]').input-sm
+					option(value="draft") Borrador
+					option(value="active") Activa
+					option(value="closed") Cerrada
+		.form-group 
+			label.col-md-3.control-label Costo de envío:
+			.col-md-2
+				input(name='deal[shipping_cost]', type='text', class="required number",minlength="1", maxlength="5").form-control.input-sm
+		-if (stores.length > 0)
+			.form-group 
+				label.col-md-3.control-label Disponible en franquicias:
+				.col-md-8#branches_list
+					
+		.form-group
+			.col-sm-offset-3.col-sm-8
+				if(stores.length > 0)
+					button(type='submit').btn.btn-primary Cargar
+				else
+					button(disabled="disabled", type="submit").btn.btn-primary Cargar
+				
+			
+
+	script(type="text/javascript", src="/js/deals/create.js")

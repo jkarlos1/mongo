@@ -1,0 +1,14 @@
+tr
+	td 
+		-if(!commission.paid_date)
+			input(type="checkbox",class="select_list", name="commissions", amount="#{commission.amount}", value="#{commission._id}")
+	td $ #{commission.amount}
+	td
+		-if(commission.paid_date)
+			span.label.label-success Cobrado
+		-else
+			span.label.label-info No cobrado
+	td #{commission.created.getDate()} / #{commission.created.getMonth()+1} / #{commission.created.getFullYear()}
+	td 
+		-if(typeof commission.sale !== "undefined")
+			a(href="/sales/#{commission.sale}") Ver

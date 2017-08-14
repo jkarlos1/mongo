@@ -1,0 +1,10 @@
+form(action="/users/addRole", method="post")
+	.form-group
+		.col-md-2.control-label
+			label Rol a agregar:
+		.col-md-4
+			input(type="hidden", name='id', value="#{id}")
+			select(name='role', type='text' ,class="form-control required") 
+				-each role in RolesHelper.list()
+					option(value="#{role}") #{role}
+		button(type='submit').btn.btn-primary Cargar

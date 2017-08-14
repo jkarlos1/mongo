@@ -1,0 +1,35 @@
+div(class='modal fade', id='CreateBankAccount', tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+	div(class='modal-dialog')
+		div(class='modal-content')
+			div(class='modal-header')
+				button(type='button', class='close', data-dismiss='modal', aria-hidden='true') &times
+				h4(class='modal-title', id='myModalLabel') Crear cuenta bancaria
+			div(class='modal-body')
+				form(method='post',id="bank_account_create" action='/bank_accounts/add').form-horizontal
+					.form-group
+						label.col-md-3.control-label Banco:
+						.col-md-5
+							input(name='bank_account[bank_name]', type='text' ,class="form-control required") 
+					.form-group
+						label.col-md-3.control-label Ife:
+						.col-md-5
+							input(name='bank_account[ife]', type='text', class='form-control') 
+					.form-group		
+						label.col-md-3.control-label Curp:
+						.col-md-3
+							input(name='bank_account[curp]', type='text', class='form-control') 
+					.form-group
+						label.col-md-3.control-label CLABE:
+						.col-md-3
+							input(name='bank_account[bank_clabe]', type='text', class='form-control') 
+					.form-group
+						label.col-md-3.control-label  Ruta:
+						.col-md-5
+							input(name='bank_account[bank_rute]', type='text', class='form-control') 
+					.form-group		
+						label.col-md-3.control-label  Numero de Cuenta:
+						.col-md-5
+							input(name='bank_account[bank_number]', type='text', class='form-control') 
+					.form-group
+						.col-sm-offset-3.col-sm-8
+							button(type='submit').btn.btn-primary Cargar

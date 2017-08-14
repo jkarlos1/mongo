@@ -1,0 +1,49 @@
+extends ../layout
+
+block content
+	p.text-info
+		#{expose.message}
+	h3 Lista de Invitaciones
+	.glyphicon.glyphicon-user
+	a(href="#" data-toggle="modal", data-target="#invitationModal")  Invita a Giombu!
+	br
+	br
+	br
+	table.table.table-condensed.table-striped
+		tr
+			td
+				h5 Nombre
+			td
+				h5 Email
+			td
+				h5 Respuesta
+			td
+		-if(invitations)
+			-each invitation in invitations
+				tr
+					td
+						a(href="/invitations/#{invitation._id}")
+							p #{invitation.name}
+					td
+						a(href="/invitations/#{invitation._id}")
+							p #{invitation.email}
+					td
+					
+						a(href="/invitations/#{invitation._id}")
+							p #{invitation.accepted_date}
+					
+						a(href="/invitations/#{invitation._id}")
+							p #{invitation.declined_date}
+					
+					td.span1
+						a(href="/invitations/edit/#{invitation._id}", rel="tooltip", title="Editar").btn.btn-mini
+							i.icon-pencil
+		-else
+			p No hay invitaciones	
+	include ../partials/invitations/invite
+
+
+
+
+
+//	a(href='/intranet/invitations/create') Invita a Giombu

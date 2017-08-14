@@ -1,0 +1,54 @@
+.other-questions
+	-if(typeof questions !== "undefined")
+		-for (var i = questions.length-1; i >= 0; i--)
+			.media.well.well-sm
+				.user_question
+					a(class="pull-left", href="#") 
+						-if (questions[i].user)
+							-if (typeof questions[i].user.image !== "undefined")
+								-if (typeof questions[i].user.image[0] === "undefined")
+									img(class="user_img", src="/img/mr_bean.png").img-thumbnail
+								-else
+									img(class="user_img", src="/photos/users/"+questions[i].user.image[0].filename.toString()).img-thumbnail
+							-else
+								img(class="user_img", src="/img/mr_bean.png").img-thumbnail
+				.media-body.col-md-10
+					h4.media-heading  #{questions[i].user.username}
+					p #{questions[i].question}
+				-if(RolesHelper.isPartner(expose.user._id, deal.store)) //Partner
+					.media
+						-if(typeof questions[i].partner !== "undefined")
+							-if(questions[i].answer.length > 0)
+								a(class="pull-left", href="#") 
+									-if (typeof questions[i].partner.image !== "undefined")
+										-if (typeof questions[i].partner.image[0] === "undefined")
+											img(class="user_img", src="/img/mr_bean.png")
+										-else
+											img(class="user_img", src="/photos/users/"+questions[i].partner.image[0].filename.toString())
+									-else
+										img(class="user_img", src="/img/mr_bean.png")
+								.media-body
+									.media-heading 
+										p #{questions[i].partner.username}
+									p #{questions[i].answer}
+							-else
+								.media-body
+									.media-heading 
+										form(class="answer", method="post", action="/questions/answer/#{questions[i]._id}")
+											label Responder:
+											input(type="text", name="answer")
+											input(type="submit", class="btn btn-info", value="Responder")
+				-if(RolesHelper.admin(expose.user))
+					.media
+						a(class="pull-left", href="#") 
+							img(class= "answer_img", src="/img/logo_giombu.png")
+						.media-body
+							.media-heading 
+								p Administrador
+							-if(questions[i].answer_admin)
+								p #{questions[i].answer_admin}
+							-else
+								form(class="answer_admin", method="post", action="/questions/admin_answer/#{questions[i]._id}")
+									label Responder:
+									input(type="text", name="answer_admin", id="answer_admin")
+									input(type="submit", class="btn btn-info", value="Responder")

@@ -1,0 +1,1 @@
+var result = db.users.find().limit(1).pretty();

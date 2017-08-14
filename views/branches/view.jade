@@ -1,0 +1,86 @@
+extends ../layout
+
+block content
+	.col-md-9
+		h3 Datos de la sucursal #{branch.name}
+		.glyphicon.glyphicon-arrow-left
+		a(href="/stores/review/#{store._id}")  Volver al comercio
+		br
+		.glyphicon.glyphicon-pencil
+		a(href="/stores/#{store._id}/branches/edit/#{branch._id}")  Editar
+		br
+		.glyphicon.glyphicon-remove.text-danger
+		a(href="/stores/#{store._id}/branches/remove/#{branch._id}").text-danger  Eliminar
+		br
+		br
+		table.table.table-condensed
+			tr
+				td.col-md-2
+					| Nombre:
+				td
+					| #{branch.name}
+			tr
+				td.col-md-2
+					| Provincia:
+				td
+					| #{branch.city.state.name}
+			tr
+				td.col-md-2
+					| Ciudad:
+				td
+					| #{branch.city.name}
+			tr
+				td.col-md-2
+					| Dirección:
+				td
+					| #{branch.address}
+			tr
+				td.col-md-2
+					| Cod. Postal:
+				td
+					| #{branch.zip}
+			tr
+				td.col-md-2
+					| Email
+				td
+					| #{branch.email}
+			tr
+				td.col-md-2
+					| Telefono:
+				td
+					| #{branch.phone}
+			tr
+				td.col-md-2
+					| Creada:
+				td
+					| #{branch.created}
+			tr
+				td.col-md-2
+					| Modificada:
+				td
+					| #{branch.modified}
+			tr
+				td.col-md-2
+					| Franquicia:
+				td
+					| #{branch.franchise.name}
+			tr
+				td.col-md-2
+					| partner:
+				td
+					| #{branch.partner.name}
+			tr
+				td.col-md-2
+					| Fanpage:
+				td
+					| #{branch.fanpage}
+			tr
+				td.col-md-2
+					| Web:
+				td
+					| #{branch.website}
+			tr
+				td.col-md-2
+					| Twitter:
+				td
+					| #{branch.twitter}

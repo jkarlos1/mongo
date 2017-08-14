@@ -1,0 +1,25 @@
+// my-template.jade
+extends ../layout
+
+//Bloque de contenido.
+block content
+	.span6
+		table.table
+			tr
+				td	Name
+				td	#{invitation.name}
+			tr
+				td	Email
+				td	#{invitation.email}
+			tr
+				td	Asunto
+				td	#{invitation.subject}
+			tr
+				td	Cuerpo
+				td	#{invitation.body}
+			tr
+				td	Aceptada
+				td	#{invitation.accepted_date}
+			tr
+				td	Declinada
+				td	#{invitation.declined_date}

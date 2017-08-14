@@ -1,0 +1,42 @@
+extends ../layout
+
+block content
+	-var images = deal.images
+	-var id = deal._id
+	-var param = 'deals'
+	-var title = deal.title
+	-var description = deal.characteristics
+	.col-md-9
+		include ../partials/images/carousel_show
+	include ../partials/deals/price
+	.col-md-3.countdown(id='Deal#{i}' ,data-end="#{deal.end_date.getMonth()+1}/#{deal.end_date.getDate()}/#{deal.end_date.getFullYear()} #{deal.end_date.getHours()}:#{deal.end_date.getMinutes()}:#{deal.end_date.getSeconds()}", data-gmt="-#{deal.end_date.getTimezoneOffset()/60}")
+	include ../partials/deals/seller
+	.deal_body.col-md-9.pull-left
+		table.table-condensed
+		.col-md-6.container.countdown(id='Deal#{i}' ,data-end="#{deal.end_date.getMonth()+1}/#{deal.end_date.getDate()}/#{deal.end_date.getFullYear()} #{deal.end_date.getHours()}:#{deal.end_date.getMinutes()}:#{deal.end_date.getSeconds()}", data-gmt="-#{deal.end_date.getTimezoneOffset()/60}")
+		br
+		br
+		table.table.table-condensed.table-striped
+			tr
+				td label Titulo
+				td #{deal.title}
+			tr
+				td label Subtitulo
+				td #{deal.tagline}
+			tr
+				td label Link
+				td #{deal.slug}
+			tr
+				td label Caracteristicas
+				td #{deal.characteristics}
+			tr
+				td label Condiciones
+				td #{deal.conditions}
+		br
+		.alert.alert-info
+			p Periodo de caje: #{deal.start_redeem.getDate()} / #{deal.start_redeem.getMonth()+1} / #{deal.start_redeem.getFullYear()}  y hasta el día #{deal.end_redeem.getDate()} / #{deal.end_redeem.getMonth()+1} / #{deal.end_redeem.getFullYear()} 
+		include ../partials/sale/list
+		-var franchises = deal.franchises
+		include ../partials/franchises/list
+	-var store = deal.store 
+	include ../partials/store/store

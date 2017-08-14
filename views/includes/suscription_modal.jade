@@ -1,0 +1,14 @@
+#subscription.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+	.modal-header
+		button(class="close", data-dismiss="modal", aria-hidden="true") &times
+		h3 ¡Recibe nuestras ofertas!
+	.modal-body
+		form(action="/subscribers/create", method="post")
+			input(name='subscriber[email]', type='text',value="Mail") 
+			br 
+			select(name="subscriber[franchise]", class="franchises_subscription",type="text")
+				option(value='Rosario') Rosario
+				option(value='Parana') Parana
+			br
+			button.btn.btn-primary(name='submit', type='submit') Enviar
+	.modal-footer

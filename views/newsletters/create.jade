@@ -1,0 +1,39 @@
+// my-template.jade
+extends ../layout
+
+//Bloque de contenido.
+block content
+	h3 Crear Newsletter
+	.col-md-8
+		form(method='post',id="newsletters_create" ,action='/newsletters/filter_deals').form-horizontal
+			.form-group
+				label.col-md-4.control-label Titulo:
+				.col-md-8
+					input(name='newsletter[title]', type='text',class="form-control required")
+			.form-group
+				label.col-md-4.control-label Franquicia:
+				.col-md-8
+					select(name='newsletter[franchise]', type='text' ,class="form-control required") 
+						-each franchise in franchises
+							option(value="#{franchise._id}") #{franchise.name}
+			.form-group
+				label.col-md-4.control-label Cantidad de ofertas:
+				.col-md-8
+					select(name='newsletter[max_deals]', type='text' ,class="form-control required") 
+						option(value="1") 1
+						option(value="5") 5
+						option(value="10") 10
+						option(value="15") 15
+						option(value="20") 20
+			.form-group
+				label.col-md-4.control-label Fecha de inicio:
+				.col-md-8
+					input(name='start_timeframe', type='date', placeholder="dd/mm/yyyy" ,class="form-control required date").form-control.input-sm
+			.form-group
+				label.col-md-4.control-label Fecha de fin:
+				.col-md-8
+					input(name='end_timeframe', type='date', placeholder="dd/mm/yyyy" ,class="form-control required date").form-control.input-sm
+			br
+			.form-group
+				.col-sm-offset-2
+					button(type="submit", class="btn btn-primary") Paso siguiente

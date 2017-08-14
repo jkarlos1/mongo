@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+	h3 Lista de Franquiciantes
+	.glyphicon.glyphicon-plus
+	a(href="#", data-toggle="modal", data-target="#CreateFranchisor")  Cargar Franquiciante
+	br
+	br
+	br
+	.col-md-6
+		table.table.table-condensed.table-hover.table-striped
+			tbody.table-striped
+				-each franchisor in franchisors
+					tr
+						td.col-md-4
+							a(href="/franchises/#{franchisor._id}") #{franchisor.name}
+						td.col-md-2
+							.glyphicon.glyphicon-pencil
+							a(href="/franchisors/edit/#{franchisor._id}")  Editar
+	include ../franchisors/create
+

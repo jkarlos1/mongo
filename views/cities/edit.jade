@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+
+    h3 #{state.name} - Editar Ciudad
+    br
+    form(method="POST" action="/cities/edit").form-horizontal
+        input(name="city_id" type="hidden" value="#{city._id}")
+        .form-group
+            label.col-md-2.control-label Nombre
+            .col-md-8
+                input(name="city[name]" type="text" value="#{city.name}").form-control.input-sm
+        .form-group
+            .col-sm-offset-2.col-sm-8
+                button(type='submit').btn.btn-default Guardar

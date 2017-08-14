@@ -1,0 +1,80 @@
+// my-template.jade
+extends ../home
+block content
+	.body_register
+		.container_form
+			h4 Registrate
+			br
+			br
+			form(method='post', id="users_register", action='/users/save').form-horizontal
+					label Nombre de Usuario:
+						input(name='username', type='text', class='required') 
+					label Nombres:
+						input(name='name', type='text' ,class="required") 
+					label Apellido(s):
+						input(name='lname', type='text' ,class="required") 
+					label Email:
+						input(name='email', type='text' ,class="required email") 
+					label Contraseña:
+						input(name='password', type='password', class="required") 
+					label Confirmar contraseña:
+						input(name='confirm_password', type='password', class="required") 
+					label Fecha de nacimiento:
+						input(name='birthday', type='date', class="required") 
+					label Genero:
+						select
+							option(value='m') Masculino
+							option(value='f') Femenino
+					label Telefono:
+						input(name='phone', type='text')
+					label Celular:
+						input(name='mobile', type='text') 		
+					label Dirección: 
+						input(name='address', type='text', class="required") 
+					label Páis:
+						select(name='country', type='text' ,class="required")
+							option(value="argentina") Argentina
+					label Provincia:
+						select(name='state', type='text' ,class="required")
+							option( value="entrerios") Entre Rios
+					label Ciudad:
+						select(name='city', type='text' ,class="required")
+							option(value="parana") Parana
+					label Codigo Postal:
+						input(name='zip', type='text', class="required") 
+					label Usuario Que te Invito: 
+						input(type='text', name="inviter",placeholder="Usuario" ,class="users_input typeahead" , data-provide="typeahead", data-items="4") 
+					br
+					br
+					button.btn.btn-primary(name='submit', type='submit') Registrarme
+		.login_register
+			h4 Ya estas registrado?
+			br
+			br
+			.container_form
+				form(method='post', action='/users/login_user/')
+					label Usuario:
+						input(name='username', type='text' ,class="required")
+					label Contraseña:	
+						input(name='password', type='password' ,class="required") 
+					br
+					button.btn.btn-primary(name='submit', type='submit') Enviar
+
+
+	#myModal.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+		.modal-header
+			- if(typeof(error) != 'undefined')
+				p #{error}
+			- else
+				h3 ¿Estás registrado?
+		.modal-body
+			div( class='container_form')
+				form(method='post', action='/users/login_user/')
+					label Usuario
+					input(name='username', type='text' ,class="required")
+					label Contraseña	
+					input(name='password', type='password' ,class="required") 
+					br
+					button.btn.btn-primary(name='submit', type='submit') Enviar
+		.modal-footer
+			a(href="/users/register") Registrate en Giombu

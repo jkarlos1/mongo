@@ -1,0 +1,16 @@
+div(class='modal fade', id='CreateCity', tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    div(class='modal-dialog')
+        div(class='modal-content')
+            div(class='modal-header')
+                button(type='button', class='close', data-dismiss='modal', aria-hidden='true') &times
+                h4(class='modal-title', id='myModalLabel') #{state.name} - Cargar Ciudad
+            div(class='modal-body')
+                form(method="POST" action="/cities/create").form-horizontal
+                    input(name="city[state]" type="hidden" value="#{state._id}")
+                    .form-group
+                        label.col-md-2.control-label Nombre
+                        .col-md-8
+                            input(name="city[name]" type="text").form-control.input-sm
+                    .form-group
+                        .col-sm-offset-2.col-sm-8
+                            button(type='submit').btn.btn-default Guardar

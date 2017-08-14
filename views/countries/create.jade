@@ -1,0 +1,16 @@
+div(class='modal fade', id='CreateCountry', tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+	div(class='modal-dialog')
+		div(class='modal-content')
+			div(class='modal-header')
+				button(type='button', class='close', data-dismiss='modal', aria-hidden='true') &times
+				h4(class='modal-title', id='myModalLabel') Cargar País
+			div(class='modal-body')
+				form(method='post', id="country_create", action='/countries/create').form-horizontal
+					.form-group
+						label.col-md-2.control-label Nombre:
+						.col-md-8
+							input(name='country[name]', type='text').form-control.input-sm
+					.form-group
+						.col-sm-offset-2.col-sm-8
+							button(type='submit').btn.btn-default Cargar
+

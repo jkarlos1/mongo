@@ -1,0 +1,38 @@
+// my-template.jade
+extends ../layout
+
+//Bloques de contenido.
+
+block profile
+	.thumbnail
+		img(src="/images/mr_bean.jpg")
+	.data
+		p #{user.username}
+
+
+block content
+	h3 Mis Promotores
+	hr
+	-if(sons.length > 0)	
+		-each promoter in sons
+			.span4
+				a(href="/intranet/users/view/"+promoter._id.toString()).media
+					img(src="/images/mr_bean.jpg", class="span1")
+					h4 #{promoter.username}
+					p #{promoter.promoter.level} Platino 
+					a(href="/intranet/promoters/view_son/")
+			
+
+		.pagination.pagination-centered
+		-if(sons.length>20)
+			ul
+				li 
+					a(href="/intranet/promoters/list_sons/0") &laquo;
+				-for (var i = sons.length/20 - 1; i >= 0; i--) {
+					li 
+						a(href="/intranet/promoters/list_sons/#{i*20}") #{i}
+				-};
+				li 
+					a(href="/intranet/promoters/list_sons/#{sons.length-20}") &raquo;
+	-else
+		p No se han encontrado promotores

@@ -1,0 +1,15 @@
+.media
+	.pull-left(href="#")
+		a(href="/deals/view/#{deal._id}")
+			if(typeof deal.images!== "undefined" )
+				if(typeof deal.images[0] !== "undefined" )
+					img( src="/photos/deals/#{deal.images[0].filename}", class="image",style="width:100px;")
+				else
+					img( src="/img/logo_giombu.png", class="image",style="width:100px;")
+			else
+				img( src="/img/logo_giombu.png", class="image",style="width:100px;")
+	.media-body
+		h4.media-heading 
+			a(href="/deals/review/#{deal._id}", rel="tooltip") #{deal.title}
+		.media-body
+			p #{deal.characteristics}

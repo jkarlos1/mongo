@@ -1,0 +1,36 @@
+// my-template.jade
+extends ../layout
+
+//Bloque de contenido.
+block content
+	h3 Editar envíos
+	br
+	br
+	.col-md-12
+		div(class='contenedor')
+			div(class='container_form')
+				form(method='post', id="promoters_register" ,action='/promoters/update').form-horizontal
+					.form-group
+						label.col-md-4.control-label Titulo de tu página personal:
+						.col-md-8
+							input(name='page_title', type='text' ,class="form-control required", value="#{user.promoter[0].page_title}") 
+					.form-group
+						label.col-md-4.control-label Cuerpo de la página personal:
+						.col-md-8
+							textarea(name='page_body', rows="13", cols="70",type='text',class="form-control required") #{user.promoter[0].page_body} 
+					.form-group
+						label.col-md-4.control-label Invitación a suscriptores:
+						.col-md-8
+							textarea(name='subscribers_invite',rows="13", cols="70", type='text',class="form-control required")	#{user.promoter[0].subscribers_invite}
+					.form-group
+						label.control-label.col-md-4 Fuiste invitado por:
+						.col-md-4
+							-if(typeof user.promoter[0].parent_id !== "undefined")
+								input(name='parent_id',data-items="4", data-provide="typeahead", placeholder="Usuario", class="form-control input-sm users_input typeahead", value="#{parent.username}", type='select') 
+							-else
+								input(name='parent_id',data-items="4", data-provide="typeahead", placeholder="Usuario", class="form-control input-sm users_input typeahead",value="#{expose.user.promoter_id.username", type='select') 
+						br
+						br
+					.form-group
+						.col-sm-offset-4.col-sm-8
+							button(type='submit').btn.btn-primary Guardar

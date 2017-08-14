@@ -1,0 +1,80 @@
+.menu
+	include profile
+	ul(class="nav nav-pills nav-stacked").clear
+		-if(RolesHelper.seller(expose.user)||RolesHelper.promoter(expose.user)||RolesHelper.admin(expose.user))
+			li.nav-header.titulos_menu
+				.glyphicon.glyphicon-star Ofertas
+			li
+				a(href='/deals/all', id="allDeals", title="Todas las ofertas") Ver Todas
+			li
+				a(href='/deals/active', class="filtered_deals") Ver Activas
+			li
+				a(href='/deals/future', class="filtered_deals") Ver Próximas
+			-if(RolesHelper.seller(expose.user)||RolesHelper.admin(expose.user))
+				li
+					a(href='/deals/create') Crear Oferta
+		li.nav-header.titulos_menu
+			.glyphicon.glyphicon-th Menu
+		li
+			a(href='/news', class="news") Noticias
+		-if(RolesHelper.promoter(expose.user))
+			li.nav-header.titulos_menu
+				.glyphicon.glyphicon-user Promotores
+			li
+				a(href='/promoters/#{expose.user._id}', class="my_profile") Mi perfil
+			li
+				a(href='/promoters/register') Editar
+		-if(RolesHelper.partner(expose.user))
+			li.nav-header.titulos_menu
+				.glyphicon.glyphicon-th Socios
+			li
+				a(href='/stores/list', class="my_stores") Mis tiendas
+			-if(RolesHelper.admin(expose.user))
+				li
+					a(href='/stores/all') Lista
+		-if(RolesHelper.seller(expose.user))
+			li.nav-header.titulos_menu
+				.glyphicon.glyphicon-shopping-cart Vendedores
+			li
+				a(href='/deals/mine', class="my_deals") Mis Ofertas
+		li.nav-header.titulos_menu
+			.glyphicon.glyphicon-user Contactos
+		li
+			a(href='/users/contacts') Listado
+		li
+			a(href='/invitations', class="invitations") Invitaciones
+		-if(RolesHelper.admin(expose.user))
+			li.nav-header.titulos_menu
+				.glyphicon.glyphicon-signal Administración
+			li
+				a(href='/stats') Estadísticas
+			li
+				a(href='/sales') Ventas
+			li
+				a(href='/users') Usuarios
+			li
+				a(href='/countries/list') Paises
+			li
+				a(href='/franchisors') Franquiciantes
+			li
+				a(href='/sellers/list') Vendedores
+			li
+				a(href='/currencies/list') Monedas
+		-if(RolesHelper.seller(expose.user)||RolesHelper.promoter(expose.user)||RolesHelper.admin(expose.user)||RolesHelper.partner(expose.user))
+			li.nav-header.titulos_menu
+				.glyphicon.glyphicon-usd Pagos
+			li
+				a(href='/payments') Lista
+			li
+				a(href='/payments/create') Pagos
+			li
+				a(href="/bank_accounts/list") Cuentas Bancarias
+		-if(RolesHelper.admin(expose.user))
+			li.nav-header.titulos_menu
+				.glyphicon.glyphicon-envelope Marketing
+			li
+				a(href='/subscribers') Suscriptores
+			li
+				a(href='/newsletters/create') Newsletters
+			li
+				a(href='h1') Lista de Mails

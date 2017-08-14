@@ -1,0 +1,38 @@
+extends ../home
+
+//Bloque de contenido.
+block content
+	h3 Datos del comercio	
+	.col-md-8
+		table.table
+			tr
+				td
+					| Name:
+				td
+					| #{store.name}
+			tr
+				td
+					| Sobre el negocio:
+				td
+					| #{store.about}
+			tr
+				td
+					| Email:
+				td
+					| #{store.email}
+		h2 Sucursales
+		table.table
+			-each branch in store.branches
+				tr
+					td
+						h3 #{branch.name}
+						p Dirección: #{branch.address}
+						p Email: #{branch.email}
+	.col-md-4
+		-if(store.images[0])
+			img(src="/photos/stores/#{store.images[0].filename}").img-responsive
+		-else
+			img(src="/photos/stores/store.jpg").img-responsive
+			
+
+

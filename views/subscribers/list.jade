@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+	h3 Suscriptores
+	.well
+		label.control-label Filtro de ciudades	:
+		select(type="text",name="filter", id="franchise_filter", class='form-control')
+			option(value="Todas") Todas
+			-each franchise in franchises
+				option(value="#{franchise.name}") #{franchise.name}
+	table.table
+		-each item in subscribers
+			if(item.franchise)
+				tr
+					td.well.franchise_subscription
+						h5(class="text-primary")
+							a(href="/users/profile/#{item._id}") #{item.name} #{item.email}
+							span(class="pull-right")
+								div(class="glyphicon glyphicon-remove text-danger")
+								a(href="/subscribers/erase_subscriber/#{item.email}/#{item.franchise._id}").text-danger
+									span Borrar
+							span(class="pull-right") &nbsp;&nbsp;|&nbsp;&nbsp;
+							span(class="pull-right").franchise_name #{item.franchise.name}
+							

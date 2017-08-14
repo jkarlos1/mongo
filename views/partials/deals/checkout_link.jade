@@ -1,0 +1,22 @@
+.well.pull-right.col-md-3
+	.pull-left
+		p Precio Original
+		p(style='font-size: 21px; text-decoration: line-through;') $ #{deal.price}
+	.pull-right
+		p Descuento
+		p.dto(style='font-size: 21px; font-weight:bold;') #{deal.discount} %
+	.clear
+		h3.price_deal $ #{deal.special_price}
+		br
+	.col-md-12
+		p Te queda:
+		.col-md-3
+			img(src="/img/clock.png", style="width:25px; height:30px")
+		.col-md-9
+			.countdown(id='Deal#{i}' ,data-end="#{deal.end_date.getMonth()+1}/#{deal.end_date.getDate()}/#{deal.end_date.getFullYear()} #{deal.end_date.getHours()}:#{deal.end_date.getMinutes()}:#{deal.end_date.getSeconds()}", data-gmt="-#{deal.end_date.getTimezoneOffset()/60}")
+	br
+	br
+	br
+	br
+	br
+	a.btn.btn-primary.col-md-12(role="button", href="/sales/checkout/#{deal._id}") Comprar

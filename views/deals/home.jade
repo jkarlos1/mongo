@@ -1,0 +1,22 @@
+extends ../home
+
+block content
+	if(deals.length > 0 )
+		-var images = deals[0].images
+		-var id = deals[0]._id
+		-var param = 'deals'
+		-var title = deals[0].title
+		-var tagline = deals[0].tagline
+		-var description = deals[0].characteristics
+		-var buy_box =true
+		include ../partials/images/carousel
+		br
+		br
+		.other_deals
+			-for (var i = 1; i < deals.length; i++)
+				-var deal = deals[i]
+				include ../partials/deals/deal
+	else
+		br
+		br
+		h3.text-center.text-muted No hay ofertas de esta categoría

@@ -1,0 +1,61 @@
+extends ../layout
+
+block content
+	.span9
+		h3 Lista de Comercios
+		.glyphicon.glyphicon-plus
+		a(href="/stores/create_store_branch")  Cargar Comercio	
+		br
+		ul.pager
+			-if(previous_page >= 0)
+				li.previous
+					a(href="/stores/list/#{previous_page}")
+						|&larr; Posterior
+			-else
+				li.previous.disabled
+					a(href="#")
+						|&larr; Posterior
+			-if(more_stores)
+				li.next
+					a(href="/stores/list/#{next_page}")
+						|Anterior &rarr;
+			-else
+				li.next.disabled
+					a(href="#")
+						|Anterior &rarr; 
+		br
+		table.table_store_list
+			-each store in stores
+				.well.media
+					.pull-left(href="#")
+						a(href="/stores/review/#{store._id}", rel="tooltip")
+							if(typeof store.images!== "undefined" )
+								if(typeof store.images[0] !== "undefined" )
+									img( src="/photos/stores/#{store.images[0].filename}", class="image",style="width:100px;")
+								else
+									img( src="/img/logo_giombu.png", class="image",style="width:100px;")
+							else
+								img( src="/img/logo_giombu.png", class="image",style="width:100px;")
+					.media-body
+						h4.media-heading 
+							a(href="/stores/review/#{store._id}", rel="tooltip") #{store.name}
+						.media-body
+							p #{store.about}
+		br
+		ul.pager
+			-if(previous_page >= 0)
+				li.previous
+					a(href="/stores/list/#{previous_page}")
+						|&larr; Posterior
+			-else
+				li.previous.disabled
+					a(href="#")
+						|&larr; Posterior
+			-if(more_stores)
+				li.next
+					a(href="/stores/list/#{next_page}")
+						|Anterior &rarr;
+			-else
+				li.next.disabled
+					a(href="#")
+						|Anterior &rarr; 

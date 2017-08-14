@@ -1,0 +1,26 @@
+{
+  "name": "giombu",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.7",
+    "jade": "*",
+    "mongoose": "~3.8.8",
+    "crypto": "0.0.3",
+    "require": "~0.5.0",
+    "colors": "~0.6.2",
+    "express-partials": "0.0.2",
+    "mandrill-api": "~1.0.39",
+    "mandrill-send": "~0.1.0",
+    "pdfkit": "~0.6.1",
+    "events": "~1.0.0",
+    "socket.io": "~0.9.16",
+    "session.socket.io": "~0.1.6",
+    "underscore": "~1.6.0",
+    "nodeletter": "~0.1.5",
+    "express-mailer": "~0.2.3"
+  }
+}

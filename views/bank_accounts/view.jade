@@ -1,0 +1,19 @@
+// template.jade
+extends ../layout
+
+//Bloque de contenido.
+block content
+	.container 
+		dl
+			dt Nombre del Banco
+				dd #{bank_account.bank_name}
+			dt Clabe
+				dd #{bank_account.bank_clabe}
+			dt Ruta
+				dd #{bank_account.bank_rute}
+			dt Numero de cuenta
+				dd #{bank_account.bank_number}
+			dt CURP
+				dd #{bank_account.curp}
+			dt IFE
+				dd #{bank_account.ife}

@@ -1,0 +1,18 @@
+// my-template.jade
+extends ../layout
+
+//Bloque de contenido.
+block content
+	h3 Finalizar Newsletter
+	form(method='post',id="newsletters_create" ,action='/newsletters/send').form-horizontal
+		-var i = 0
+		.form-group
+			label.col-md-4.control-label Incluir ofertas:
+			.col-md-8
+				-each deal in deals
+					label
+						input(type="checkbox", name="newsletter[deals][#{i}]", value="#{deal._id}")
+						| #{deal.title} 
+					-i++;
+			input(type="hidden", name="newsletter_id", value="#{id}")
+		input(type='submit', value='Enviar')

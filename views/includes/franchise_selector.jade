@@ -1,0 +1,13 @@
+.franchise_select
+	-if(typeof expose.user !== "undefined")
+		-if(typeof expose.user.selected_franchise === "undefined")
+			a(class='accordion-toggle', data-toggle="collapse", data-parent="#accordion2", href="#collapseOne") Cambiar de cuidad 
+				icon.icon-chevron-down						
+		-else
+			a(class='accordion-toggle', data-toggle="collapse", data-parent="#accordion2", href="#collapseOne") #{user.selected_franchise.name} 
+				icon.icon-chevron-down
+	-else
+		a(class='accordion-toggle', data-toggle="collapse", data-parent="#accordion2", href="#collapseOne") Cambiar de cuidad 
+			icon.icon-chevron-down	
+#collapseOne(class='accordion-body collapse off')
+	.accordion-inner.inner_home

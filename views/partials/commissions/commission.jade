@@ -1,0 +1,7 @@
+tr 
+	td.col-md-3 $ #{commission.amount}
+	td.col-md-3 #{commission.created.getDate()} / #{commission.created.getMonth()+1} / #{commission.created.getFullYear()}
+	td 
+		-if(typeof commission.sale !== "undefined")
+			.glyphicon.glyphicon-eye-open
+			a(href="/sales/#{commission.sale}")  Ver

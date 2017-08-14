@@ -1,0 +1,10 @@
+.well.col-md-3.pull-right
+	-if(store.images[0])
+		img(src="/photos/stores/#{store.images[0].filename}").thumbnail.img-responsive
+	-else
+		img(src="/photos/stores/store.jpg").thumbnail.img-responsive
+	.caption
+		h3 #{store.name} 
+		p #{store.about} 
+		p #{store.email} 
+		a(class="btn btn-primary", role="button", href="/stores/#{store._id}") Ver

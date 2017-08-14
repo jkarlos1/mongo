@@ -1,0 +1,28 @@
+div(id="invitationModal", class="modal fade",tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+	.modal-dialog
+		.modal-content
+			.modal-header
+				button(class="close", data-dismiss="modal", aria-hidden="true") &times
+				h4(class='modal-title', id='myModalLabel') Invita a Giombu
+			.modal-body
+				form(method='post',id="invitations_create",role="form",action='/invitations/add')
+					.form-group
+						label(for="nameinv") Nombre:
+						input(name='invitation[name]',id="nameinv", type='text' ,class="form-control required") 
+					.form-group
+						label(for="email") Email:
+						input(name='invitation[email]',id="email", type='text' ,class="form-control required") 
+					.form-group
+						label(for="subject") Asunto:
+						textarea(name='invitation[subject]',id="subject", type='text' ,class="form-control required") 
+					.form-group
+						label(for="invitationbody") Cuerpo:
+						textarea(name='invitation[body]',id="invitationbody", type='text' , rows="3", class="form-control required") 
+					.form-group
+						label(for="invitation_type") Tipo de Invitacion:
+						select(name='invitation[invitation_type]', id="invitation_type",type='text', class="form-control") 
+							option(value='user') Usuario
+							option(value='promoter') Promotor
+							option(value='seller') Vendedor
+					button.btn.btn-primary(name='submit', type='submit') Invitar
+

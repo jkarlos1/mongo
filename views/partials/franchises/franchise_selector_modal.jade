@@ -1,0 +1,16 @@
+div(class='modal fade', id='SelectorFranchiseModal', tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+	div(class='modal-dialog')
+		div(class='modal-content')
+			div(class='modal-header')
+				button(type='button', class='close', data-dismiss='modal', aria-hidden='true') &times
+				h4(class='modal-title', id='myModalLabel') Seleccione franquicia
+			div(class='modal-body')
+				.container-fluid
+					.col-md-6.col-md-offset-3
+						form(method="POST", action="/deals/select_franchise", id="franchise_select_form")
+							select.form-control#countries_select
+							br
+							select(name='franchise_id', type='text').form-control#franchises_select
+							br
+							button(type="submit").btn.btn-default.center-block Cargar
+			

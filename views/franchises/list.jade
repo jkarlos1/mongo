@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+	h3 Lista de Franquicias
+	.glyphicon.glyphicon-list
+	a(href='/franchisors')  Lista de Franquiciantes
+	br
+	.glyphicon.glyphicon-plus
+	a(href="#", data-toggle="modal", data-target="#CreateFranchise")  Cargar Franquicia
+	br
+	br
+	br
+	.col-md-8
+		table.table.table-striped.table-condensed.table-hover
+			tbody
+				th
+					|Nombre
+				th
+					|Nombre Corto
+				th
+					|Por defecto?
+				th
+					|Zona Horaria
+				th
+				-each franchise in franchises
+					tr
+						td.col-md-4
+							|#{franchise.name}
+						td.col-md-4
+							|#{franchise.slug}
+						td.col-md-4
+							|#{franchise.is_default}
+						td.col-md-4
+							|#{franchise.timezone}
+						td.col-md-4
+							a(href="/franchises/edit/#{franchise._id}")
+								.glyphicon.glyphicon-pencil
+	include ../franchises/create
+								

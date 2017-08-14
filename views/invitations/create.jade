@@ -1,0 +1,26 @@
+// my-template.jade
+extends ../layout
+
+//Bloque de contenido.
+block content
+	h3 Invitar
+	.container
+		-if(typeof messagge !== "undefined")
+			.alert.alert #{messagge}
+		.form_container.offset3
+			form(method='post',id="invitations_create" ,action='/invitations/add')
+				label Nombre:
+					input(name='invitation[name]', type='text' ,class="required") 
+				label Email:
+					input(name='invitation[email]', type='text' ,class="required") 
+				label Asunto:
+					textarea(name='invitation[subject]', type='text' ,class="required") 
+				label Cuerpo:
+					textarea(name='invitation[body]', type='text' ,class="required") 
+				label Tipo de Invitacion:
+					select(name='invitation[invitation_type]', type='text') 
+						option(value='user') Usuario
+						option(value='promoter') Promotor
+						option(value='seller') Vendedor
+				br
+				input(type='submit', value='Enviar')

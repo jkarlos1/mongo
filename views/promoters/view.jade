@@ -1,0 +1,10 @@
+// my-template.jade
+extends ../home
+
+//Bloque de contenido.
+block content
+	.jumbotron
+		h1 #{user.promoter[0].page_title}
+		p #{user.promoter[0].page_body}
+		p #{user.promoter[0].subscribers_invite}
+		a(href="/users/create/#{user.username}") Registrate!

@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+		h3 Lista de Vendedores
+		br
+		table.table
+			-each seller in sellers
+				tr
+					td.seller_name
+						h5 #{seller.name} #{seller.lname}
+							if(seller.sellers)
+								span.pull-left.seller_name #{sellers.seller.name}
+

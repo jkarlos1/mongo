@@ -1,0 +1,13 @@
+form(role='form', id='franchise_subscription_form', action="/subscribers/create", method="post").form-inline
+	.form-group
+		.glyphicon.glyphicon-envelope
+		label.space Suscribete a las ofertas de:
+		select( id='franchise_subscription', name='franchise_subscription').form-control.input-sm.space
+	.form-group
+		label.sr-only(for='email_subscriber') Email
+		input(type='email', class='form-control input-sm space',name='email_subscriber' ,id='email_subscriber', placeholder='Ingrese su email')
+	.form-group
+		label.sr-only(for='name_subscription') Nombre
+		input(type='text', class='form-control input-sm space',name='name_subscription' ,id='name_subscription', placeholder='Ingrese su nombre')
+	button(type='submit', class='btn btn-primary btn-sm') Recibe!
+

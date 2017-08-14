@@ -1,0 +1,9 @@
+.media
+	-if(image)
+		.pull-left(href="#")
+			img(class="media-object", src="/photos/#{param}/#{image.filename}", style="width:100px" , alt="#{image.filename}")
+		.media-body
+			h4.media-heading #{image.filename}
+			a(href="/images/delete/users/#{user._id}/#{image._id}") Borrar
+	-else
+		p No hay imagenes

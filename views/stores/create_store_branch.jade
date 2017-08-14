@@ -1,0 +1,95 @@
+
+extends ../layout
+
+block content
+	h3 Crear nuevo comercio
+	.glyphicon.glyphicon-th-list.space
+	a(href="/stores") Lista de comercio
+	br
+	br
+	br
+	form(method='post', id="form_create_store_branch", action='/stores/add_store_branch').form-horizontal
+		.form-group
+			label.col-md-3.control-label Nombre:
+			.col-md-6
+				input(name='store[name]', type='text', class="form-control required", minlength="3")
+		.form-group
+			label.col-md-3.control-label Email:
+			.col-md-6
+				input(name='store[email]', type='text', class="form-control required")
+		.form-group
+			label.col-md-3.control-label País:
+			.col-md-4
+				select(name="store[country]", id="country_selector", class="form-control required")
+					option(value="0") Selecciona Pais
+					-each country in countries
+						option(value="#{country._id}") #{country.name}
+		.form-group
+			label.col-md-3.control-label Franquiciante:
+			.col-md-4
+				select(name="store[franchisor]", id="franchisor_selector", class="form-control required")
+				
+		.form-group
+			label.col-md-3.control-label Sobre el comercio:
+			.col-md-6
+				input(name='store[about]', type='text' ,class="form-control required")
+		
+
+
+		br
+		h4 Informacion de la Sucursal
+		br
+		.form-group
+			label.col-md-3.control-label Nombre:
+			.col-md-6
+				input(name='branch[name]', type='text' ,class="form-control required", minlength="3")
+		.form-group
+			label.col-md-3.control-label Provincia:
+			.col-md-4
+				select(name="branch[state]", id="state_selector", class='form-control required')
+		.form-group
+			label.col-md-3.control-label Ciudad:
+			.col-md-4
+				select(name="branch[city]", id="city_selector", class='form-control required')
+		.form-group
+			label.col-md-3.control-label Franquicia:
+			.col-md-4
+				select(name="branch[franchise]", id="franchise_selector", class="form-control required")
+		.form-group
+			label.col-md-3.control-label Dirección:
+			.col-md-6
+				input(name='branch[address]', type='text',class='form-control required')
+		.form-group
+			label.col-md-3.control-label Codigo Postal:
+			.col-md-3
+				input(name='branch[zip]', type='text', class='form-control required')
+		.form-group
+			label.col-md-3.control-label Teléfono:
+			.col-md-3
+				input(name='branch[phone]', type='text', class='form-control required')
+		.form-group
+			label.col-md-3.control-label Email:
+			.col-md-6
+				input(name='branch[email]', type='text' ,class='form-control required email')
+		.form-group
+			label.col-md-3.control-label Web:
+			.col-md-6
+				input(name='branch[website]', type='text', class='form-control')
+		.form-group
+			label.col-md-3.control-label Fanpage:
+			.col-md-6
+				input(name='branch[fanpage]', type='text', class='form-control')
+		.form-group
+			label.col-md-3.control-label Twitter:
+			.col-md-6
+				input(name='branch[twitter]', type='text', class='form-control')
+		.form-group
+			label.col-md-3.control-label Usuario asignado:
+			.col-md-6
+				input(type='text', name="branch[partner]", id='branch_partner', placeholder="Usuario" ,class="form-control users_input typeahead", value="#{expose.user.username}" , data-provide="typeahead", data-items="4")
+		br
+		.form-group
+			.col-sm-offset-3.col-sm-8
+				button(type='submit' id='submit_btn').btn.btn-primary Guardar
+
+	script(tpye="text/javascript" src="/js/stores/create_store_branch.js")

@@ -1,0 +1,10 @@
+-if (coupon.status === "unredeemed")
+	.alert.alert-info(style="text-align:center")
+		b #{coupon.code}
+		p No canjeado
+		-if(RolesHelper.isPartner(expose.user, deal.store))
+			a(href='/deals/redeem_coupon/#{sale._id}/#{coupon.code}', role="button", class="btn btn-sm btn-primary") Canjear
+-else
+	.alert.alert-success
+		b #{coupon.code}
+		p Canjeado 	

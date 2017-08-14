@@ -1,0 +1,43 @@
+extends ../layout
+
+block content
+	h3 Noticias
+	ul.pager
+		-if(previous_page >= 0)
+			li.previous
+				a(href="/news/#{previous_page}")
+					|&larr; Posterior
+		-else
+			li.previous.disabled
+				a(href="#")
+					|&larr; Posterior
+		-if(more_news)
+			li.next
+				a(href="/news/#{next_page}")
+					|Anterior &rarr;
+		-else
+			li.next.disabled
+				a(href="#")
+					|Anterior &rarr;
+	-each new_element in news_list
+		.well
+			strong #{new_element.title}
+			p #{new_element.message}
+			small.text-muted.pull-right #{new_element.date}
+	ul.pager
+		-if(previous_page >= 0)
+			li.previous
+				a(href="/news/#{previous_page}")
+					|&larr; Posterior
+		-else
+			li.previous.disabled
+				a(href="#")
+					|&larr; Posterior
+		-if(more_news)
+			li.next
+				a(href="/news/#{next_page}")
+					|Anterior &rarr;
+		-else
+			li.next.disabled
+				a(href="#")
+					|Anterior &rarr;

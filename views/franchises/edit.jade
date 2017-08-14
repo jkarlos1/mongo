@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+	h3 Editar Franquicia
+	br
+	form(method='post', id="franchise_edit", action='/franchises/edit').form-horizontal
+		input(name='franchise_id', type='hidden', value='#{franchise._id}')
+		.form-group
+				label.col-md-2.control-label Nombre:
+				.col-md-8
+					input(name='franchise[name]',value='#{franchise.name}', type='text').form-control.input-sm
+		.form-group
+				label.col-md-2.control-label Nombre corto:
+				.col-md-8
+					input(name='franchise[slug]',value='#{franchise.slug}', type='text').form-control.input-sm
+		.form-group
+				label.col-md-2.control-label Default:
+				.col-md-8
+				-if(franchise.is_default)
+					input(name='franchise[is_default]',checked="true", type='checkbox').form-control.input-sm
+				-else
+					input(name='franchise[is_default]', type='checkbox').form-control.input-sm
+		.form-group
+				label.col-md-2.control-label Zona horaria:
+				.col-md-8
+					input(name='franchise[timezone]',value='#{franchise.timezone}', type='text').form-control.input-sm
+		.form-group
+			.col-sm-offset-2.col-sm-8
+				button(type='submit').btn.btn-default Guardar

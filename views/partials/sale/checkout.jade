@@ -1,0 +1,27 @@
+script(rel='text/javascript', src='/js/checkout.js')
+.media
+	a.pull-left
+		img.media-object(src="/photos/deals/#{deal.images[0].filename}", style="width: 120px;")
+	.media-body
+		.media-heading
+			table.table
+				tr.buy_descripcion  
+					td.descripcion Descripcion
+					td.quantity Unidades
+					td.multipliedBy 
+					td.priceSingle Precio Giombu
+					td.priceSum Total
+				tr.buy_data
+					td.descripcion
+						h4 #{deal.title}
+					td.quantity
+						select(name='quantity', id="quantity").form-control
+								each item in list
+									option(value='#{item}') #{item}
+					td.multipliedBy x
+					td.priceSingle
+						$ 
+						span#special_price #{deal.special_price}
+					td.priceSum
+						p $
+							span#total_of_sale

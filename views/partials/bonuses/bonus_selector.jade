@@ -1,0 +1,16 @@
+tr
+	td
+		-if(!bonus.paid_date)
+			input(type="checkbox",class="select_list", name="bonuses", amount="#{bonus.amount}" ,value="#{bonus._id}")
+	td
+		a(href="/users/#{bonus.promoter._id}") #{bonus.promoter.username}
+	td $ #{bonus.amount}
+	td
+		-if(bonus.paid_date)
+			span.label.label-success Cobrado
+		-else
+			span.label.label-info No cobrado
+	td #{bonus.created.getDate()} / #{bonus.created.getMonth()+1} / #{bonus.created.getFullYear()}
+	td 
+		-if(typeof bonus !== "undefined")
+			a(href="/bonus/#{bonus._id}") Ver

@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+	.col-md-9
+		h3 Lista de Usuarios
+		br
+		.col-md-8
+			table.table.table-condensed.table-hover
+				-each user in users
+					tr.span3
+						td
+							h5 Nombre: #{user.name} #{user.lname}
+							h5 Usuario: 
+								a(href="/users/#{user._id}", rel="tooltip") #{user.username}

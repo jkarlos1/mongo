@@ -1,0 +1,18 @@
+h3 Lista de Compras
+table.table
+	tr
+		th Estado
+		th Forma de Pago
+		th Fecha
+		th Cupones
+		th 
+	-each sale in deal.sales
+		tr
+			td #{sale.status}
+			td #{sale.payment_method}
+			td #{sale.created}
+			td
+				-each coupon in sale.coupons
+					include ../coupons/compact_view
+			td
+				a(href="/sales/view/#{sale._id}") Ver

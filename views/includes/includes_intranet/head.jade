@@ -1,0 +1,18 @@
+#head_intranet.col-md-12
+	a(href="/")
+		img(src="/img/logo_giombu.png", id="logo_giombu", style="margin-bottom:15px;")
+	-if (expose.message)
+		.alert.alert-info.alert-dismissable
+			button(type="button" class="close" data-dismiss="alert" aria-hidden="true")&times;
+			p #{expose.message}
+	-if (expose.error)
+		.alert.alert-danger.alert-dismissable
+			button(type="button" class="close" data-dismiss="alert" aria-hidden="true")&times;
+			p #{expose.error}
+	.pull-right
+		-if(expose.user)
+			a(href="/users/logout")
+				span.glyphicon.glyphicon-log-out.col-md-pull-1
+				| Salir
+	.pull-right
+		include ../../partials/news/menu

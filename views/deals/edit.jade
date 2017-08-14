@@ -1,0 +1,136 @@
+// my-template.jade
+extends ../layout
+
+
+//Bloque de contenido.
+block content
+	script(type="text/javascript" src="/js/jquery.tagline.js")
+	link(rel="stylesheet", type="text/css", href="/css/jquery.tagline.css")
+	.col-md-8
+	h3 Editar Oferta
+	br
+	form(method='post', id="deal_create", action='/deals/update').form-horizontal
+		input(name='deal[_id]', type='hidden', value='#{deal._id}')
+		.form-group
+			label.col-md-2.control-label Titulo:
+			.col-md-8
+				input(name='deal[title]', type='text', value='#{deal.title}').form-control.input-sm
+		.form-group
+			label.col-md-2.control-label Tagline:
+			.col-md-8
+				input(name='deal[tagline]',class="tags", id="tags", type='text', value='#{deal.tagline}').form-control.input-sm
+		.form-group
+			label.col-md-2.control-label Slug:
+			.col-md-8
+				input(name='deal[slug]', type='text',class="required", value='#{deal.slug}').form-control.input-sm
+		.form-group
+			label.col-md-2.control-label Características:
+			.col-md-8
+				textarea(name='deal[characteristics]', type='text',class="required",rows="9", cols="70").form-control
+					|#{deal.characteristics}
+		.form-group
+			label.col-md-2.control-label Condiciones:
+			.col-md-8
+				textarea(name='deal[conditions]', type='text',class="required",rows="9", cols="70").form-control
+					|#{deal.conditions}
+		.form-group
+			label.col-md-2.control-label Tienda:
+			.col-md-8
+				input(name='deal_store', type='text', value='#{store.name}', disabled="true").form-control.input-sm
+		.form-group
+			label.col-md-2.control-label Precio:
+			.col-md-2
+				input(name='deal[price]', type='text', id="price", class="required number" ,minlength="1",maxlength="6", value="#{deal.price}").form-control.input-sm
+		.form-group
+			label.col-md-2.control-label Descuento:
+			.col-md-2
+				input(name='deal[discount]', type='text', id="discount", class="required number",minlength="1", maxlength="2", value="#{deal.discount}").form-control.input-sm
+		.form-group 
+			label.col-md-2.control-label Precio especial:
+			.col-md-2
+				input(name='deal[special_price]', type='text', id="special_price", readonly="true", class="required number" ,minlength="1",maxlength="6", value="#{deal.special_price}").form-control.input-sm
+		.form-group
+			label.col-md-2.control-label Fecha de comienzo:
+			.col-md-3
+				input(name='deal[start_date]', type='date', placeholder="dd/mm/yyyy" ,class="required date", value='#{extra.start_date}').form-control.input-sm
+		.form-group
+			label.col-md-2.control-label Hora de comienzo:
+			.col-md-3
+				input(name='deal[start_time]', type='time', value='#{extra.start_time}',class="required").form-control#start_time.input-sm
+		.form-group
+			label.col-md-2.control-label Fecha de fin:
+			.col-md-3
+				input(name='deal[end_date]', type='date', placeholder="dd/mm/yyyy" ,class="required date", value='#{extra.end_date}').form-control.input-sm
+		.form-group
+			label.col-md-2.control-label Hora de fin:
+			.col-md-3
+				input(name='deal[end_time]', type='time', value="#{extra.end_time}",class="required").form-control#end_time.input-sm
+		.form-group
+			label.col-md-2.control-label Inicio fecha de canje:
+			.col-md-3
+				input(name='deal[start_redeem]', type='date', placeholder="dd/mm/yyyy" ,class="required date", value='#{extra.start_redeem}').form-control.input-sm
+		.form-group
+			label.col-md-2.control-label Fin fecha de canje:
+			.col-md-3
+				input(name='deal[end_redeem]', type='date', placeholder="dd/mm/yyyy" ,class="required date", value='#{extra.end_redeem}').form-control.input-sm
+		.form-group
+			label.col-md-2.control-label Max. de cupones:
+			.col-md-2
+				input(name='deal[max_coupons]', type='text' ,class="required number" ,minlength="1",maxlength="3", value='#{deal.max_coupons}').form-control.input-sm
+		.form-group
+			label.col-md-2.control-label Max. por usuario:
+			.col-md-2
+				input(name='deal[max_coupons_by_user]', type='text' ,class="required number" ,minlength="1",maxlength="3", value='#{deal.max_coupons_by_user}').form-control.input-sm
+		.form-group
+			label.col-md-2.control-label % Vendedor:
+			.col-md-2
+				input(name='deal[seller_percentage]', type='text',class="required number",minlength="1", maxlength="2", value='#{deal.seller_percentage}').form-control.input-sm
+		.form-group 
+			label.col-md-2.control-label % Giombu:
+			.col-md-2
+				input(name='deal[giombu_percentage]', type='text',class="required number",minlength="1", maxlength="2", value='#{deal.giombu_percentage}').form-control.input-sm
+		.form-group
+			label.col-md-2.control-label % Promotor:
+			.col-md-2
+				input(name='deal[promoter_percentage]', type='text',class="required number",minlength="1", maxlength="2", value='#{deal.promoter_percentage}').form-control.input-sm
+		.form-group
+			label.col-md-2.control-label Estado:
+			.col-md-8
+				select(name='deal[status]').input-sm
+					- if(deal.status == 'draft')
+						option(value="draft" selected="true") Borrador
+						option(value="active") Activa
+						option(value="closed") Cerrada
+					-else if (deal.status == 'active')
+						option(value="draft") Borrador
+						option(value="active" selected="true") Activa
+						option(value="closed") Cerrada
+					-else
+						option(value="draft") Borrador
+						option(value="active") Activa
+						option(value="closed" selected="true") Cerrada
+		.form-group 
+			label.col-md-2.control-label Costo de envío:
+			.col-md-2
+				input(name='deal[shipping_cost]', type='text' ,minlength="1", maxlength="5", value="#{deal.shipping_cost}").form-control.input-sm
+		.form-group 
+			label.col-md-2.control-labell Disponible en franquicias:
+			.col-md-8#branches_list
+				-var i = 0
+				-each branch in store.branches
+					.checkbox
+						label
+							-if(deal.branches.indexOf(branch._id) != -1)
+								input(value="#{branch._id}", name='deal[branches][#{i}]',  type='checkbox', checked='true' )
+								|#{branch.name} - #{branch.franchise.name}
+							-else
+								input(value="#{branch._id}", name='deal[branches][#{i}]',  type='checkbox' )
+								|#{branch.name} - #{branch.franchise.name}
+
+					-i++
+		.form-group
+			.col-sm-offset-4.col-sm-8
+				button(type='submit').btn.btn-default Guardar
+			
+
+	script(type="text/javascript", src="/js/deals/edit.js")

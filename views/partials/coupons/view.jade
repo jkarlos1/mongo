@@ -1,0 +1,8 @@
+-if (coupon.status === "unredeemed")
+	.alert.alert-info(style="text-align:center")
+		b Cod. de cupón: #{coupon.code}
+		p Estado: No canjeado
+-else
+	.alert.alert-success
+		b #{coupon.code}
+		p Estado: Canjeado 	

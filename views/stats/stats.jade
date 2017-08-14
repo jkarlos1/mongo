@@ -1,0 +1,125 @@
+extends ../layout
+
+block content
+	script(type='text/javascript', src='/js/Chart.js')
+	script(type='text/javascript', src='/js/Stats.js')
+	h3 Menu Estadístico
+	br
+	.panel-group(id="accordion")
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title
+					a(data-toggle="collapse", data-parent="#accordion", href="#collapsemyChart")
+						span Usuarios Nuevos por mes
+			div(id="collapsemyChart", class="panel-collapse collapse")
+				.panel-body(style="text-align:center;")
+					canvas(id="myChart", width="700", height="400")
+	.panel-group(id="accordion")
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title
+					a(data-toggle="collapse", data-parent="#accordion", href="#collapsemyChart1")
+						span Nuevas Ofertas por mes
+			div(id="collapsemyChart1", class="panel-collapse collapse")
+				.panel-body(style="text-align:center;")
+					canvas(id="myChart1", width="700", height="400")
+	.panel-group(id="accordion")
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title
+					a(data-toggle="collapse", data-parent="#accordion", href="#collapsemyChart2")
+						span Invitaciones por mes
+			div(id="collapsemyChart2", class="panel-collapse collapse")
+				.panel-body(style="text-align:center;")
+					canvas(id="myChart2", width="700", height="400")
+	.panel-group(id="accordion")
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title
+					a(data-toggle="collapse", data-parent="#accordion", href="#collapsemyChart3")
+						span Ventas por mes
+			div(id="collapsemyChart3", class="panel-collapse collapse")
+				.panel-body(style="text-align:center;")
+					canvas(id="myChart3", width="700", height="400")
+	.panel-group(id="accordion")
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title
+					a(data-toggle="collapse", data-parent="#accordion", href="#collapsemyChart4")
+						span Monto total ventas semanales
+			div(id="collapsemyChart4", class="panel-collapse collapse")
+				.panel-body(style="text-align:center;")
+					canvas(id="myChart4", width="700", height="400")
+	.panel-group(id="accordion")
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title
+					a(data-toggle="collapse", data-parent="#accordion", href="#collapsemyChart5")
+						span Nuevos promotores por mes
+			div(id="collapsemyChart5", class="panel-collapse collapse")
+				.panel-body(style="text-align:center;")
+					canvas(id="myChart5", width="700", height="400")
+	.panel-group(id="accordion")
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title
+					a(data-toggle="collapse", data-parent="#accordion", href="#collapsemyChart6")
+						span Proporcion de promotores y niveles
+			div(id="collapsemyChart6", class="panel-collapse collapse")
+				.panel-body(style="text-align:center;")
+					canvas(id="myChart6", width="700", height="400")
+	.panel-group(id="accordion")
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title
+					a(data-toggle="collapse", data-parent="#accordion", href="#collapsemyChart7")
+						span Proporcion de precios de las ofertas
+			div(id="collapsemyChart7", class="panel-collapse collapse")
+				.panel-body(style="text-align:center;")
+					p Valores expresados en cientos de pesos
+					canvas(id="myChart7", width="700", height="400")
+	.panel-group(id="accordion")
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title
+					a(data-toggle="collapse", data-parent="#accordion", href="#collapsemyChart8")
+						span Proporcion de compras segun valor de la oferta
+			div(id="collapsemyChart8", class="panel-collapse collapse")
+				.panel-body(style="text-align:center;")
+					canvas(id="myChart8", width="700", height="400")
+	.panel-group(id="accordion")
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title
+					a(data-toggle="collapse", data-parent="#accordion", href="#collapsemyChart9")
+						span Proporcion tipos de usuario
+			div(id="collapsemyChart9", class="panel-collapse collapse")
+				.panel-body(style="text-align:center;")
+					canvas(id="myChart9", width="700", height="400")
+	.panel-group(id="accordion")
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title
+					a(data-toggle="collapse", data-parent="#accordion", href="#collapsemyChart10")
+						span Vendedores mas activos
+			div(id="collapsemyChart10", class="panel-collapse collapse")
+				.panel-body(style="text-align:center;")
+					canvas(id="myChart10", width="700", height="400")
+	.panel-group(id="accordion")
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title
+					a(data-toggle="collapse", data-parent="#accordion", href="#collapsemyChart11")
+						span Usuarios con mas invitaciones
+			div(id="collapsemyChart11", class="panel-collapse collapse")
+				.panel-body(style="text-align:center;")
+					canvas(id="myChart11", width="700", height="400")
+	.panel-group(id="accordion")
+		.panel.panel-default
+			.panel-heading
+				h4.panel-title
+					a(data-toggle="collapse", data-parent="#accordion", href="#collapsemyChart12")
+						span Usuarios con mas comisiones
+			div(id="collapsemyChart12", class="panel-collapse collapse")
+				.panel-body(style="text-align:center;")
+					canvas(id="myChart12", width="700", height="400")

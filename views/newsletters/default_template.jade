@@ -1,0 +1,18 @@
+doctype html
+html
+	head
+		meta(http-equiv = 'Content-Type', content = 'text/html; charset=UTF-8')
+		title #{subject}
+	body
+		h1.h1 Newsletter Giombu
+		p
+			h3 Ofertas de #{franchise.name} 
+			img(src="#{host}/img/logo_giombu.png")
+		table
+			-each deal in deals
+				tr 
+					td
+						a(href="#{host}/deals/#{deal._id}")
+							img(class="media-object", src="#{host}/photos/deals/#{deal.images[0].filename}", style="width:100px" , alt="#{deal.images[0].filename}")
+							h3 $ #{deal.special_price} por la oferta #{deal.title}
+								p Podrás comprar esta oferta hasta el día #{deal.end_date.getDate()} / #{deal.end_date.getMonth()+1} / #{deal.end_date.getFullYear()}

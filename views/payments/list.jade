@@ -1,0 +1,17 @@
+// my-template.jade
+extends ../layout
+
+//Bloques de contenido.
+block content
+	h3 Pagos
+	table.table
+		tr
+			th Monto
+			th Fecha
+			th Banco
+			th Comisiones
+			th Bonos
+			th 
+		-each payment in payments	
+			tr
+				include ../partials/payments/payment

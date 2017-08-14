@@ -1,0 +1,16 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		title Giombu
+		link(rel="shortcut icon" href="img/giombu-icon.png" type="image/png")
+		include includes/scripts
+	body(style="background-color:#FFFFFF")
+		.container
+			include includes/head
+			.body_container
+				block content
+			include includes/login_modal
+			include includes/suscription_modal
+			include includes/footer
+		script(type="text/javascript", src="/js/deals/home.js")

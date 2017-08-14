@@ -1,0 +1,19 @@
+extends ../home
+
+block content
+	h3 Lista de Compras
+	br
+	br
+	table.table
+		tr
+			th Oferta
+			th Estado
+			th Forma de Pago
+			th Fecha
+		-each deal in deals
+			tr
+				td #{deal.title}
+				td #{deal.sales.status}
+				td #{deal.sales.payment_method}
+				td #{deal.sales.created}
+

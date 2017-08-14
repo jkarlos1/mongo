@@ -1,0 +1,70 @@
+extends ../layout 
+
+block content
+	.span9
+		h3 #{title}
+		span.glyphicon.glyphicon-plus.space
+		-if(RolesHelper.seller(expose.user))
+			a(href="/deals/create") Cargar oferta
+		br
+		br
+		ul.pager
+			-if(previous_page >= 0)
+				li.previous
+					a(href="/deals/all/#{previous_page}")
+						|&larr; Posterior
+			-else
+				li.previous.disabled
+					a(href="#")
+						|&larr; Posterior
+			-if(more_deals)
+				li.next
+					a(href="/deals/all/#{next_page}")
+						|Anterior &rarr;
+			-else
+				li.next.disabled
+					a(href="#")
+						|Anterior &rarr;
+		br
+		table.table_deal_list
+			-if (deals.length == 0)
+				p No tienes ofertas
+			-each deal in deals
+				.well(id="#{deal._id}")
+					a(href="/deals/summary/#{deal._id}", class="btn btn-primary pull-right active summary_button", role="button") Resumen
+					-if(RolesHelper.seller(expose.user))
+						.btn-group.pull-right.state_selector
+							button(type="button",class="btn btn-default status_selector dropdown-toggle #{deal.status}", data-toggle="dropdown")
+								if(deal.status === "draft")
+									span(class="status") Borrador
+								else if(deal.status === "closed")
+									span(class="status") Cerrada
+								else 
+									span(class="status") Activa
+								span(class="caret")
+							ul(class="dropdown-menu", role="menu")
+								li
+									a(class="deal_status_selector", href="#", state="draft" ,url="/deals/#{deal._id}/state/draft") Borrador
+								li
+									a(class="deal_status_selector", href="#", state="active", url="/deals/#{deal._id}/state/active") Activa
+								li
+									a(class="deal_status_selector", href="#", state="closed", url="/deals/#{deal._id}/state/closed") Cerrar
+					include ../partials/deals/review
+		br
+		ul.pager
+			-if(previous_page >= 0)
+				li.previous
+					a(href="/deals/all/#{previous_page}")
+						|&larr; Posterior
+			-else
+				li.previous.disabled
+					a(href="#")
+						|&larr; Posterior
+			-if(more_deals)
+				li.next
+					a(href="/deals/all/#{next_page}")
+						|Anterior &rarr;
+			-else
+				li.next.disabled
+					a(href="#")
+						|Anterior &rarr;

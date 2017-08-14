@@ -1,0 +1,19 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		title= title
+		link(rel="shortcut icon" href="img/giombu-icon.png" type="image/png")
+		include includes/includes_intranet/scripts
+		script(rel='text/javascript', src='/js/news/news.js')
+	body(style="background-color:#FFFFFF")
+		.container_fluid
+			#conversations_div
+			#navbar
+			include includes/includes_intranet/head
+			.col-md-12.content_body
+				.menu.col-md-2
+					include includes/includes_intranet/menu
+				.content.col-md-9
+					include includes/includes_intranet/center
+				//include includes/includes_intranet/footer

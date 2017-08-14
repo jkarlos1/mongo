@@ -1,0 +1,18 @@
+// my-template.jade
+extends ../layout
+//Bloque de contenido.
+block content
+	.contenedor
+		- if(typeof(error) != 'undefined')
+			p #{error}
+		- else
+			h3 ¿Estás registrado?
+		.container_form
+			form(method='post', action='/users/login')
+				.span1.offset5
+					label Usuario
+					input(name='username', type='text' ,class="required")
+					label Contraseña	
+					input(name='password', type='password' ,class="required") 
+					br
+					input(name='submit', type='submit') 

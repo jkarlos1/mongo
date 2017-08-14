@@ -1,0 +1,6 @@
+.media
+	.pull-left(href="#")
+		img(class="media-object", src="/photos/#{param}/#{image.filename}", style="width:100px" , alt="#{image.filename}")
+	.media-body
+		h4.media-heading #{image.filename}
+		a(href="/images/delete/deals/#{deal._id}/#{image._id}") Borrar

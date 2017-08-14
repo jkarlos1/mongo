@@ -1,0 +1,1 @@
+{ "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "ns" : "giombu.currencies", "name" : "_id_" }, { "v" : 1, "key" : { "iso" : 1 }, "unique" : true, "ns" : "giombu.currencies", "name" : "iso_1", "background" : true, "safe" : null } ] }

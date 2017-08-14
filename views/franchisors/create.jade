@@ -1,0 +1,39 @@
+div(class='modal fade', id='CreateFranchisor', tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+	div(class='modal-dialog')
+		div(class='modal-content')
+			div(class='modal-header')
+				button(type='button', class='close', data-dismiss='modal', aria-hidden='true') &times
+				h4(class='modal-title', id='myModalLabel') Nuevo franquiciante
+			div(class='modal-body')
+				form(method='post', id="franchisor_create", action='/franchisors/create').form-horizontal
+					.form-group
+						label.col-md-3.control-label Nombre:
+						.col-md-6
+							input(name='franchisor[name]', type='text').form-control.input-sm
+					.form-group
+						label.col-md-3.control-label Dominio:
+						.col-md-6
+							input(name='franchisor[default_domain]', type='text').form-control.input-sm
+					.form-group
+							label.col-md-3.control-label Dominio seguro:
+							.col-md-6
+								input(name='franchisor[secure_domain]', type='text').form-control.input-sm
+					.form-group
+							label.col-md-3.control-label Desinencia:
+							.col-md-6
+								input(name='franchisor[cctdl]', type='text').form-control.input-sm
+					.form-group
+							label.col-md-3.control-label Zona horaria:
+							.col-md-1
+								input(name='franchisor[default_timezone]', type='text').form-control.input-sm
+					.form-group
+							label.col-md-3.control-label Lenguaje:
+							.col-md-2
+								input(name='franchisor[language]', type='text').form-control.input-sm
+					.form-group
+							label.col-md-3.control-label Fanpage:
+							.col-md-6
+								input(name='franchisor[fanpage]', type='text').form-control.input-sm
+					.form-group
+						.col-sm-offset-3.col-sm-8
+							button(type='submit').btn.btn-primary Cargar

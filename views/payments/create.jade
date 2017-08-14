@@ -1,0 +1,69 @@
+// my-template.jade
+extends ../layout
+
+//Bloques de contenido.
+
+
+block content
+		script(rel='text/javascript', src='/js/payment_validation.js')
+		h4
+			-if(typeof message !== "undefined")
+				span #{message}
+		label 
+			h3 Seleccionar Todos
+			input(type="checkbox", name="selectAll", id="selectAll")
+			.validation_message
+		form(class="payment_selector",method="post", id="create_payment", name="create_payment", action="/payments/new")
+			-if(bankaccounts.length > 0)
+				h3 Cuenta Destino
+				table.table.misbonos
+					tr
+						th
+						th Banco - Nro Cuenta
+					-each bankaccount in bankaccounts
+						tr
+							td
+								-if(bankaccount._id === bankaccounts[0]._id)
+									input(type="radio", name="bank_account", id="bank_account",checked="true", value="#{bankaccount._id}") 
+								-else
+									input(type="radio", name="bank_account", id="bank_account", value="#{bankaccount._id}") 
+							td
+								label(for="bank_account") #{bankaccount.bank_name} - #{bankaccount.bank_number}
+			-if(typeof bonuses !== "undefined")
+				h3 Bonos
+				table.table.misbonos
+					tr
+						th
+						th Usuario
+						th Monto
+						th Estado
+						th Fecha
+						th 
+					-if (bonuses)
+						-each bonus in bonuses
+							include ../partials/bonuses/bonus_selector
+				h3 Comisiones
+				table.table.misbonos
+					tr
+						th
+						th Monto
+						th Estado
+						th Fecha
+						th 
+					-each commission in commissions	
+						tr
+							include ../partials/commissions/commission_selector
+			-if(bankaccounts.length !== 0)
+				-if (payment)
+					input(type="button", value="Crear pago" ,  class="create_payment")
+					div(class="alert alert-warning", role="alert")
+						span No puede crear nuevos pagos si ya ha realizado uno en la ultima semana.
+						span Ultimo pago creado el #{payment.created}
+				-else
+					input(type="button", value="Crear pago" , class="create_payment")
+			-else
+				div(class="alert alert-danger", role="alert")
+						span No puede realizar el cobro. No posee una cuenta bancaria asociada a su cuenta de usuario. 
+				
+				
+

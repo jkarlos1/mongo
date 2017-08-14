@@ -1,0 +1,18 @@
+.profile
+	.col-md-12
+		a(href='/users/profile') 
+			if (typeof expose.user !== "undefined")
+				if (typeof expose.user.images !== "undefined")
+					if (typeof expose.user.images[0] === "undefined")
+						//Maru cambie esto porque se veia toda deforme la imagen
+						//Dejo el codigo viejo por las dudas
+						//bengui
+						//img(src="/img/mr_bean.png", class='img-thumbnail', style="max-width:70px; height:80px; margin-bottom:10px;")
+						img(src="/img/mr_bean.png", class='img-thumbnail img-responsive', style="width:80px; height:80px; margin-bottom:10px;")
+					else
+						img(class='img-thumbnail', src="/photos/users/#{expose.user.images[0].filename}", style="width:80px; height:80px; margin-bottom:10px;")
+			else
+				img(class='img-thumbnail', src="/img/mr_bean.png", style="width:80px; height:80px; margin-bottom:10px;")
+			if (!(typeof expose.user === "undefined"))
+				p.pull-right.p_profile #{expose.user.username} #{expose.user.partner}
+				//a(href='/users/profile/edit/') Editar Perfil

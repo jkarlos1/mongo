@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+
+    h3 Editar Estado / Provincia
+    br
+    form(method="POST" action="/states/edit").form-horizontal
+        input(name="state_id" type="hidden" value="#{state._id}")
+        .form-group
+            label.col-md-1.control-label Nombre
+            .col-md-6
+                input(name="state[name]" type="text" value="#{state.name}").form-control.input-sm
+        .form-group
+            .col-sm-offset-1.col-sm-8
+                button(type='submit').btn.btn-default Guardar
+    br
+    br
+    h3 Ciudades
+    .glyphicon.glyphicon-plus
+    a(href="#", data-toggle="modal", data-target="#CreateCity")   Cargar Ciudad
+    br
+    br
+    .col-md-6
+        table.table.table-condensed.table-hover
+            tbody.table-striped
+                -each city in cities
+                    tr
+                        td.col-md-6 #{city.name}
+                        td.col-md-2
+                            .glyphicon.glyphicon-pencil
+                            a(href="/cities/edit/#{city._id}")  Editar
+                        td
+                            .glyphicon.glyphicon-remove.text-danger
+                            a(href="#").text-danger  Eliminar
+    include ../cities/create
